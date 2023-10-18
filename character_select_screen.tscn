@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtope30u7clqe"]
+
+[ext_resource type="Script" path="res://character_select_screen.gd" id="1_6pbif"]
+[ext_resource type="Texture2D" uid="uid://dd8obfakhpb6a" path="res://GameAssets/ReadyButton.png" id="2_dfk08"]
+[ext_resource type="Texture2D" uid="uid://dcfwl7eaucqm2" path="res://GameAssets/SelectionArrow.png" id="3_hq2k5"]
+[ext_resource type="Texture2D" uid="uid://ijefyrewif2p" path="res://GameAssets/Slime.png" id="4_g7iyt"]
+[ext_resource type="Texture2D" uid="uid://bfkexrthv8j6y" path="res://GameAssets/GhostMinion.png" id="5_s8xdk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0dusq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_g7iyt")
+}],
+"loop": true,
+"name": &"Warior",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_s8xdk")
+}],
+"loop": true,
+"name": &"wizard",
+"speed": 5.0
+}]
+
+[node name="character_select_screen" type="Node2D"]
+script = ExtResource("1_6pbif")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1206.0
+offset_bottom = 681.0
+
+[node name="ready" type="TextureButton" parent="."]
+offset_left = 450.0
+offset_top = 320.0
+offset_right = 470.0
+offset_bottom = 326.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("2_dfk08")
+
+[node name="selection_arrow_left" type="TextureButton" parent="."]
+offset_left = 350.0
+offset_top = 180.0
+offset_right = 355.0
+offset_bottom = 189.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("3_hq2k5")
+
+[node name="selection_arrow_right" type="TextureButton" parent="."]
+offset_left = 680.0
+offset_top = 180.0
+offset_right = 685.0
+offset_bottom = 189.0
+scale = Vector2(10, 10)
+texture_normal = ExtResource("3_hq2k5")
+flip_h = true
+
+[node name="Character" type="AnimatedSprite2D" parent="."]
+position = Vector2(540, 210)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_0dusq")
+animation = &"Warior"
+autoplay = "Warior"
+
+[connection signal="pressed" from="ready" to="." method="_on_ready_pressed"]
+[connection signal="pressed" from="selection_arrow_left" to="." method="_on_selection_arrow_left_pressed"]
+[connection signal="pressed" from="selection_arrow_right" to="." method="_on_selection_arrow_right_pressed"]

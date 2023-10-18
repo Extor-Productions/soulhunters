@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvgyxitgmm12"]
+
+[ext_resource type="Texture2D" uid="uid://bfkexrthv8j6y" path="res://GameAssets/GhostMinion.png" id="1_r5k4e"]
+[ext_resource type="Script" path="res://ghost_minion.gd" id="1_w5bqd"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_fw7s2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t64ln"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_r5k4e")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vnrww"]
+radius = 126.016
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n0mou"]
+radius = 4.0
+height = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1gwh2"]
+radius = 11.0
+
+[node name="ghost_minion" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_w5bqd")
+
+[node name="floor_distance2" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_fw7s2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t64ln")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="player_detect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detect"]
+shape = SubResource("CircleShape2D_vnrww")
+
+[node name="hit_box" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
+shape = SubResource("CapsuleShape2D_n0mou")
+
+[node name="luanch_back_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="luanch_back_area"]
+shape = SubResource("CircleShape2D_1gwh2")
+
+[connection signal="body_shape_entered" from="player_detect" to="." method="_on_player_detect_body_shape_entered"]
+[connection signal="body_shape_exited" from="player_detect" to="." method="_on_player_detect_body_shape_exited"]
+[connection signal="body_entered" from="hit_box" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_exited" from="luanch_back_area" to="." method="_on_luanch_back_area_body_exited"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://5e1lv8cli7ru"]
+
+[ext_resource type="Script" path="res://snail.gd" id="1_71gg0"]
+[ext_resource type="Texture2D" uid="uid://co71yqh57of3s" path="res://GameAssets/Snail.png" id="1_dp76j"]
+[ext_resource type="Script" path="res://Duplicate/enemy_hurt_box.gd" id="3_alnc6"]
+[ext_resource type="Script" path="res://Duplicate/enemy_hit_box.gd" id="4_a5y8g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4xp0j"]
+radius = 5.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q1kkd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dp76j")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tcndc"]
+radius = 8.0
+
+[node name="snail" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_71gg0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_4xp0j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CollisionShape2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q1kkd")
+animation = &"Run"
+
+[node name="enemy_hurt_box" type="Area2D" parent="."]
+script = ExtResource("3_alnc6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hurt_box"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_tcndc")
+
+[node name="enemy_hit_box" type="Area2D" parent="."]
+script = ExtResource("4_a5y8g")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="enemy_hit_box"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_tcndc")
