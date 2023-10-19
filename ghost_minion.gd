@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 var player = null
-var garvity : int = 900.0
-var speed : int = 100.0
+var garvity : int = 900
+var speed : int = 100
 var chase = false
 var luanch_back = false
 var stop = false

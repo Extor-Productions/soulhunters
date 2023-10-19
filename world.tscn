@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://s5uhwyymxufb"]
+[gd_scene load_steps=9 format=3 uid="uid://s5uhwyymxufb"]
 
 [ext_resource type="Texture2D" uid="uid://b7c6dpn6osgra" path="res://GameAssets/TileSet.png" id="1_r8jlc"]
 [ext_resource type="PackedScene" uid="uid://d4dj6v1xp1jek" path="res://slime_warrior.tscn" id="2_5ud1m"]
 [ext_resource type="PackedScene" uid="uid://dvgyxitgmm12" path="res://ghost_minion.tscn" id="3_n8rk2"]
 [ext_resource type="PackedScene" uid="uid://5e1lv8cli7ru" path="res://snail.tscn" id="4_aea7o"]
+[ext_resource type="Script" path="res://snail_movment.gd" id="4_kb4x7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o64m3"]
 texture = ExtResource("1_r8jlc")
@@ -61,6 +62,12 @@ physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_o64m3")
 
+[sub_resource type="Curve2D" id="Curve2D_0vftm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -8, 7, 0, 0, 0, 0, -56, 7, 0, 0, 0, 0, -56, 23, 0, 0, 0, 0, -120, 23, 0, 0, 0, 0, -120, -41, 0, 0, 0, 0, 152, -41, 0, 0, 0, 0, 152, -105, 0, 0, 0, 0, 424, -105, 0, 0, 0, 0, 424, 23, 0, 0, 0, 0, -8, 23, 0, 0, 0, 0, -8, 7)
+}
+point_count = 11
+
 [node name="World" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -79,5 +86,16 @@ position = Vector2(413, 315)
 [node name="ghost_minion2" parent="Enemy" instance=ExtResource("3_n8rk2")]
 position = Vector2(500, 311)
 
-[node name="snail" parent="." instance=ExtResource("4_aea7o")]
-position = Vector2(270, 342)
+[node name="Path2D" type="Path2D" parent="Enemy"]
+position = Vector2(344, 329)
+curve = SubResource("Curve2D_0vftm")
+script = ExtResource("4_kb4x7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Enemy/Path2D"]
+position = Vector2(-8, 7)
+rotation = 3.14159
+
+[node name="snail" parent="Enemy/Path2D/PathFollow2D" instance=ExtResource("4_aea7o")]
+position = Vector2(-3.05176e-05, 4.99997)
+rotation = -3.14159
+scale = Vector2(1, 1)

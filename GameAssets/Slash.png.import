@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpmn5brjvqcgv"
-path="res://.godot/imported/SlimeWarrior_Slash.png-27931ef65c533c94a167b72ce6ac6ca3.ctex"
+uid="uid://daxyo8j13fegy"
+path="res://.godot/imported/Slash.png-7a441ed106abc5d4111e5cb22342cbab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GameAssets/SlimeWarrior_Slash.png"
-dest_files=["res://.godot/imported/SlimeWarrior_Slash.png-27931ef65c533c94a167b72ce6ac6ca3.ctex"]
+source_file="res://GameAssets/Slash.png"
+dest_files=["res://.godot/imported/Slash.png-7a441ed106abc5d4111e5cb22342cbab.ctex"]
 
 [params]
 

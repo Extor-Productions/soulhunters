@@ -1,31 +1,31 @@
-[gd_scene load_steps=14 format=3 uid="uid://d4dj6v1xp1jek"]
+[gd_scene load_steps=13 format=3 uid="uid://d4dj6v1xp1jek"]
 
 [ext_resource type="Texture2D" uid="uid://ijefyrewif2p" path="res://GameAssets/Slime.png" id="1_5s55d"]
 [ext_resource type="Script" path="res://slime_warrior.gd" id="1_sccvk"]
-[ext_resource type="Texture2D" uid="uid://dpmn5brjvqcgv" path="res://GameAssets/SlimeWarrior_Slash.png" id="3_uajr6"]
+[ext_resource type="Texture2D" uid="uid://daxyo8j13fegy" path="res://GameAssets/Slash.png" id="3_mestp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r1kxy"]
 radius = 2.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tx1eo"]
-atlas = ExtResource("3_uajr6")
-region = Rect2(0, 0, 21, 14)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pmun"]
+atlas = ExtResource("3_mestp")
+region = Rect2(0, 0, 31, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_16tum"]
-atlas = ExtResource("3_uajr6")
-region = Rect2(21, 0, 21, 14)
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0fg0"]
+atlas = ExtResource("3_mestp")
+region = Rect2(31, 0, 31, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2tynd"]
-atlas = ExtResource("3_uajr6")
-region = Rect2(42, 0, 21, 14)
+[sub_resource type="AtlasTexture" id="AtlasTexture_571xf"]
+atlas = ExtResource("3_mestp")
+region = Rect2(62, 0, 31, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l1xx4"]
-atlas = ExtResource("3_uajr6")
-region = Rect2(21, 14, 21, 14)
+[sub_resource type="AtlasTexture" id="AtlasTexture_q30xn"]
+atlas = ExtResource("3_mestp")
+region = Rect2(0, 16, 31, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bcvdm"]
-atlas = ExtResource("3_uajr6")
-region = Rect2(0, 14, 21, 14)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmwe8"]
+atlas = ExtResource("3_mestp")
+region = Rect2(31, 16, 31, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8k3yd"]
 animations = [{
@@ -54,83 +54,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tx1eo")
+"texture": SubResource("AtlasTexture_8pmun")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_16tum")
+"texture": SubResource("AtlasTexture_l0fg0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2tynd")
+"texture": SubResource("AtlasTexture_571xf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l1xx4")
+"texture": SubResource("AtlasTexture_q30xn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bcvdm")
+"texture": SubResource("AtlasTexture_wmwe8")
 }],
 "loop": true,
 "name": &"Slash",
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_dnc1j"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Slash"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_vxnjp"]
-resource_name = "slash"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Slash"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.000961971, 0.0506335, 0.0851268, 0.128635, 0.161083),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 4, 3]
-}
+[sub_resource type="Animation" id="Animation_ollpj"]
+resource_name = "Slash"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0yxue"]
 _data = {
-"RESET": SubResource("Animation_dnc1j"),
-"slash": SubResource("Animation_vxnjp")
+"Slash": SubResource("Animation_ollpj")
 }
 
 [node name="slime_warrior" type="CharacterBody2D"]
@@ -155,6 +103,7 @@ position = Vector2(-6, 6)
 shape = SubResource("CircleShape2D_r1kxy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8, 0)
 scale = Vector2(1.02381, 1)
 sprite_frames = SubResource("SpriteFrames_8k3yd")
 animation = &"Slash"
