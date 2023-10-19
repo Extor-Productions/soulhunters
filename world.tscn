@@ -98,4 +98,3 @@ rotation = 3.14159
 [node name="snail" parent="Enemy/Path2D/PathFollow2D" instance=ExtResource("4_aea7o")]
 position = Vector2(-3.05176e-05, 4.99997)
 rotation = -3.14159
-scale = Vector2(1, 1)
