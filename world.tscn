@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://s5uhwyymxufb"]
+[gd_scene load_steps=10 format=3 uid="uid://s5uhwyymxufb"]
 
 [ext_resource type="Texture2D" uid="uid://b7c6dpn6osgra" path="res://GameAssets/TileSet.png" id="1_r8jlc"]
 [ext_resource type="PackedScene" uid="uid://d4dj6v1xp1jek" path="res://slime_warrior.tscn" id="2_5ud1m"]
 [ext_resource type="PackedScene" uid="uid://dvgyxitgmm12" path="res://ghost_minion.tscn" id="3_n8rk2"]
 [ext_resource type="PackedScene" uid="uid://5e1lv8cli7ru" path="res://snail.tscn" id="4_aea7o"]
 [ext_resource type="Script" path="res://snail_movment.gd" id="4_kb4x7"]
+[ext_resource type="PackedScene" uid="uid://bx6fve0qwbiaj" path="res://character_body_2d.tscn" id="6_q37ya"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o64m3"]
 texture = ExtResource("1_r8jlc")
@@ -98,4 +99,6 @@ rotation = 3.14159
 [node name="snail" parent="Enemy/Path2D/PathFollow2D" instance=ExtResource("4_aea7o")]
 position = Vector2(-3.05176e-05, 4.99997)
 rotation = -3.14159
-scale = Vector2(1, 1)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("6_q37ya")]
+position = Vector2(272, 339)

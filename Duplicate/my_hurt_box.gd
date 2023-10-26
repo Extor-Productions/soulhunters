@@ -17,6 +17,7 @@ func _on_area_entered(hitbox: enemy_hit_box):
 		return
 	
 	if hitbox.name == "enemy_hit_box":
+		
 		if owner.has_method("take_damage"):
 			
 			owner.take_damage(hitbox.damage)

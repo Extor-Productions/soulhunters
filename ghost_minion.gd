@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
 var player = null
-var garvity : int = 900
+var gravity : int = 900
 var speed : int = 100
 var chase = false
-var luanch_back = false
+var launch_back = false
 var stop = false
 
 func _physics_process(delta):
@@ -17,11 +17,11 @@ func _physics_process(delta):
 		
 		if not is_on_floor() and chase == false:
 			
-			velocity.y += garvity * delta
+			velocity.y += gravity * delta
 		
 		#spöket jagar
 		
-		if chase == true and luanch_back == false:
+		if chase == true and launch_back == false:
 			
 			var direction = (player.position - position).normalized()
 			
@@ -29,11 +29,11 @@ func _physics_process(delta):
 		
 		#skickar till baka spelaren
 		
-		if luanch_back == true:
+		if launch_back == true:
 			
-			var disctanse = (player.position - position).normalized()
+			var distance = (player.position - position).normalized()
 			
-			velocity = disctanse * speed * -2
+			velocity = distance * speed * -2
 		
 		move_and_slide()
 
@@ -65,7 +65,7 @@ func _on_hit_box_body_entered(body):
 		
 		Game.player_health  -= 1
 		
-		luanch_back = true
+		launch_back = true
 
 #sträckan man skickas till baka när man skadar spelare
 
@@ -73,7 +73,7 @@ func _on_luanch_back_area_body_exited(body):
 	
 		if body.name == Game.player_name:
 			
-			luanch_back = false
+			launch_back = false
 			
 			stop = true
 			

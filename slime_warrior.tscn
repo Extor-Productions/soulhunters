@@ -1,11 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://d4dj6v1xp1jek"]
+[gd_scene load_steps=16 format=3 uid="uid://d4dj6v1xp1jek"]
 
 [ext_resource type="Texture2D" uid="uid://ijefyrewif2p" path="res://GameAssets/Slime.png" id="1_5s55d"]
 [ext_resource type="Script" path="res://slime_warrior.gd" id="1_sccvk"]
+[ext_resource type="Script" path="res://Duplicate/my_hit_box.gd" id="2_3bpry"]
+[ext_resource type="Script" path="res://Duplicate/my_hurt_box.gd" id="3_f0riw"]
 [ext_resource type="Texture2D" uid="uid://daxyo8j13fegy" path="res://GameAssets/Slash.png" id="3_mestp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r1kxy"]
 radius = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7v1gd"]
+size = Vector2(15, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pmun"]
 atlas = ExtResource("3_mestp")
@@ -102,12 +107,25 @@ shape = SubResource("CircleShape2D_r1kxy")
 position = Vector2(-6, 6)
 shape = SubResource("CircleShape2D_r1kxy")
 
+[node name="my_hit_box" type="Area2D" parent="."]
+script = ExtResource("2_3bpry")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="my_hit_box"]
+position = Vector2(-15.5, 0)
+shape = SubResource("RectangleShape2D_7v1gd")
+
+[node name="my_hurt_box" type="Area2D" parent="."]
+script = ExtResource("3_f0riw")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="my_hurt_box"]
+polygon = PackedVector2Array(6, 7, 7, 6, 8, 5, 8, 3, 7, 2, 7, 1, 6, 0, 5, -1, 4, -2, 3, -2, 2, -3, -2, -3, -3, -2, -4, -2, -5, -1, -6, 0, -7, 1, -7, 2, -8, 3, -8, 5, -7, 6, -5, 8, 5, 8)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-8, 0)
-scale = Vector2(1.02381, 1)
+position = Vector2(2.6077e-07, 0)
 sprite_frames = SubResource("SpriteFrames_8k3yd")
-animation = &"Slash"
+animation = &"Idle"
 autoplay = "Idle"
+frame_progress = 0.800069
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 root_node = NodePath("../..")

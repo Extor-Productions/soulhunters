@@ -1,3 +1,4 @@
+class_name snail
 extends CharacterBody2D
 
 var health = 5
