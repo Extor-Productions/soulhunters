@@ -121,7 +121,11 @@ script = ExtResource("3_f0riw")
 polygon = PackedVector2Array(6, 7, 7, 6, 8, 5, 8, 3, 7, 2, 7, 1, 6, 0, 5, -1, 4, -2, 3, -2, 2, -3, -2, -3, -3, -2, -4, -2, -5, -1, -6, 0, -7, 1, -7, 2, -8, 3, -8, 5, -7, 6, -5, 8, 5, 8)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+<<<<<<< HEAD
 position = Vector2(2.6077e-07, 0)
+=======
+scale = Vector2(1.02381, 1)
+>>>>>>> a486cd66f91a14e2051ff1e8f2f392dd28508b0d
 sprite_frames = SubResource("SpriteFrames_8k3yd")
 animation = &"Idle"
 autoplay = "Idle"
