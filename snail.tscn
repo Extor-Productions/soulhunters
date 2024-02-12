@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Duplicate/enemy_hit_box.gd" id="4_a5y8g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_och6v"]
-size = Vector2(9, 10)
+size = Vector2(10, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q1kkd"]
 animations = [{
@@ -29,7 +29,6 @@ collision_mask = 0
 script = ExtResource("1_71gg0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_och6v")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -53,3 +52,14 @@ script = ExtResource("4_a5y8g")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="enemy_hit_box"]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_tcndc")
+
+[node name="Korvtimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Indestrukteble_timer" type="Timer" parent="."]
+wait_time = 1.99
+one_shot = true
+
+[connection signal="timeout" from="Korvtimer" to="." method="_on_korvtimer_timeout"]
+[connection signal="timeout" from="Indestrukteble_timer" to="." method="_on_indestrukteble_timer_timeout"]

@@ -1,138 +1,172 @@
-[gd_scene load_steps=16 format=3 uid="uid://d4dj6v1xp1jek"]
+[gd_scene load_steps=15 format=3 uid="uid://d4dj6v1xp1jek"]
 
-[ext_resource type="Texture2D" uid="uid://ijefyrewif2p" path="res://GameAssets/Slime.png" id="1_5s55d"]
 [ext_resource type="Script" path="res://slime_warrior.gd" id="1_sccvk"]
 [ext_resource type="Script" path="res://Duplicate/my_hit_box.gd" id="2_3bpry"]
-[ext_resource type="Script" path="res://Duplicate/my_hurt_box.gd" id="3_f0riw"]
+[ext_resource type="Texture2D" uid="uid://cjqjc248drb13" path="res://GameAssets/pixil-frame-0_6-1.png" id="2_w1y70"]
 [ext_resource type="Texture2D" uid="uid://daxyo8j13fegy" path="res://GameAssets/Slash.png" id="3_mestp"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r1kxy"]
-radius = 2.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7v1gd"]
-size = Vector2(15, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8pmun"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_usnm3"]
 atlas = ExtResource("3_mestp")
 region = Rect2(0, 0, 31, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l0fg0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3fhf"]
 atlas = ExtResource("3_mestp")
 region = Rect2(31, 0, 31, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_571xf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvo7t"]
 atlas = ExtResource("3_mestp")
 region = Rect2(62, 0, 31, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q30xn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdqew"]
 atlas = ExtResource("3_mestp")
 region = Rect2(0, 16, 31, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wmwe8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1c38"]
 atlas = ExtResource("3_mestp")
 region = Rect2(31, 16, 31, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8k3yd"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qcl4g"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"Fall",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_5s55d")
+"texture": ExtResource("2_w1y70")
 }],
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"Jump",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"Run",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8pmun")
+"texture": SubResource("AtlasTexture_usnm3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l0fg0")
+"texture": SubResource("AtlasTexture_g3fhf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_571xf")
+"texture": SubResource("AtlasTexture_bvo7t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q30xn")
+"texture": SubResource("AtlasTexture_sdqew")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wmwe8")
+"texture": SubResource("AtlasTexture_o1c38")
 }],
-"loop": true,
-"name": &"Slash",
-"speed": 5.0
+"loop": false,
+"name": &"new_animation",
+"speed": 20.0
 }]
 
-[sub_resource type="Animation" id="Animation_ollpj"]
-resource_name = "Slash"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0yxue"]
-_data = {
-"Slash": SubResource("Animation_ollpj")
+[sub_resource type="Animation" id="Animation_1tot0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("my_hit_box/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7l8df"]
+resource_name = "Slash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("my_hit_box/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"new_animation", &"Idle"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gxcch"]
+_data = {
+"RESET": SubResource("Animation_1tot0"),
+"Slash": SubResource("Animation_7l8df")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfan8"]
+size = Vector2(16, 15.75)
 
 [node name="slime_warrior" type="CharacterBody2D"]
 collision_mask = 12
 script = ExtResource("1_sccvk")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(10, 10)
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visibility_layer = 4
-position = Vector2(-8, 10)
-polygon = PackedVector2Array(11, -13, 11, -12, 13, -12, 13, -11, 14, -11, 14, -10, 15, -10, 15, -8, 16, -8, 16, -4, 15, -4, 15, -3, 14, -3, 14, -2, 2, -2, 2, -3, 1, -3, 1, -4, 0, -4, 0, -8, 1, -8, 1, -10, 2, -10, 2, -11, 3, -11, 3, -12, 5, -12, 5, -13)
+rotation = 6.28319
+polygon = PackedVector2Array(3, -3, 3, -2, 5, -2, 5, -1, 6, -1, 6, 0, 7, 0, 7, 2, 8, 2, 8, 6, 7, 6, 7, 7, 6, 7, 6, 8, -6, 8, -6, 7, -7, 7, -7, 6, -8, 6, -8, 2, -7, 2, -7, 0, -6, 0, -6, -1, -5, -1, -5, -2, -3, -2, -3, -2, -3, -3)
+one_way_collision_margin = 0.0
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-visibility_layer = 4
-position = Vector2(6, 6)
-shape = SubResource("CircleShape2D_r1kxy")
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-6, 6)
-shape = SubResource("CircleShape2D_r1kxy")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(7.73289, 2.08165e-12)
+scale = Vector2(-1.01723, 1)
+sprite_frames = SubResource("SpriteFrames_qcl4g")
+animation = &"new_animation"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gxcch")
+}
 
 [node name="my_hit_box" type="Area2D" parent="."]
 script = ExtResource("2_3bpry")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="my_hit_box"]
-position = Vector2(-15.5, 0)
-shape = SubResource("RectangleShape2D_7v1gd")
+position = Vector2(16, 0.125)
+shape = SubResource("RectangleShape2D_kfan8")
+disabled = true
 
-[node name="my_hurt_box" type="Area2D" parent="."]
-script = ExtResource("3_f0riw")
+[node name="my_hit_box2" type="Area2D" parent="."]
+script = ExtResource("2_3bpry")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="my_hurt_box"]
-polygon = PackedVector2Array(6, 7, 7, 6, 8, 5, 8, 3, 7, 2, 7, 1, 6, 0, 5, -1, 4, -2, 3, -2, 2, -3, -2, -3, -3, -2, -4, -2, -5, -1, -6, 0, -7, 1, -7, 2, -8, 3, -8, 5, -7, 6, -5, 8, 5, 8)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-<<<<<<< HEAD
-position = Vector2(2.6077e-07, 0)
-=======
-scale = Vector2(1.02381, 1)
->>>>>>> a486cd66f91a14e2051ff1e8f2f392dd28508b0d
-sprite_frames = SubResource("SpriteFrames_8k3yd")
-animation = &"Idle"
-autoplay = "Idle"
-frame_progress = 0.800069
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_0yxue")
-}
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="my_hit_box2"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_kfan8")
+disabled = true

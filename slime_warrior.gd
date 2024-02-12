@@ -7,8 +7,11 @@ extends CharacterBody2D
 @export var max_jumps : int = 2
 @export var current_jumps : int = 0
 
+@onready var up_slash = $my_hit_box2
+
 #kollar om det är rätt klass
 func exist_start():
+	
 	if Game._class != 0:
 		
 		queue_free()
@@ -16,12 +19,18 @@ func exist_start():
 	if Game._class == 0:
 		
 		Game.player_name = "slime_warrior"
+	
+	$AnimationPlayer.play("RESET")
+	
+	$AnimatedSprite2D.play("Idle")
 
-func _process(_delta):
+func _ready():
 	
 	exist_start()
 
 func _physics_process(delta):
+	
+	slash()
 	
 	move_x_axis()
 	
@@ -30,6 +39,26 @@ func _physics_process(delta):
 	jump()
 	
 	move_and_slide()
+
+func slash():
+	
+	if Input.is_action_just_pressed("BasicAttack"):
+		
+		if Input.is_action_pressed("up"):
+			
+			up_slash.scale.y = -1
+			
+			#$AnimationPlayer
+			
+		elif Input.is_action_pressed("dwon"):
+			
+			up_slash.scale.y = 1
+			
+			#$AnimationPlayer
+			
+		else:
+			
+			$AnimationPlayer.play("Slash")
 
 func jump():
 	
@@ -50,7 +79,7 @@ func jump():
 			
 			current_jumps += 1
 			
-			$AnimatedSprite2D.play("Jump")
+			#$AnimatedSprite2D.play("Jump")
 
 func move_x_axis():
 	
@@ -61,7 +90,8 @@ func move_x_axis():
 		velocity.x = direction * speed
 		
 		if is_on_floor():
-			$AnimatedSprite2D.play("Run")
+			#$AnimatedSprite2D.play("Run")
+			pass
 		
 	else:
 		
@@ -69,17 +99,22 @@ func move_x_axis():
 		
 		if is_on_floor():
 			
-			$AnimatedSprite2D.play("Idle")
+			#$AnimatedSprite2D.play("Idle")
+			pass
 	
 	#rotate höger vänster
 	
-	if direction == 1:
+	if direction == -1:
 		
-		$AnimatedSprite2D.flip_h = true
+		scale.y = -1
 		
-	elif direction == -1:
+		rotation_degrees = 180
 		
-		$AnimatedSprite2D.flip_h = false
+	elif direction == 1:
+		
+		scale.y = 1
+		
+		rotation_degrees = 0
 
 func _gravity(delta):
 	
@@ -88,8 +123,13 @@ func _gravity(delta):
 		velocity.y += gravity * delta
 		
 		if velocity.y > 0:
-			$AnimatedSprite2D.play("Fall")
+			#$AnimatedSprite2D.play("Fall")
+			pass
 
 func take_damage(amount):
 	
 	return
+
+func knock_back():
+	pass
+	

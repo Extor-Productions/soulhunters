@@ -13,15 +13,20 @@ func _physics_process(delta):
 	
 	if stop == false:
 		
+		
 		#spöket gravitation
 		
 		if not is_on_floor() and chase == false:
+			
+			#collision_mask = 4
 			
 			velocity.y += gravity * delta
 		
 		#spöket jagar
 		
 		if chase == true and launch_back == false:
+			
+			#collision_mask = 0
 			
 			var direction = (player.position - position).normalized()
 			
