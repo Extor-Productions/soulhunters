@@ -39,7 +39,8 @@ func _physics_process(delta):
 	
 	#Knockback
 	if knockback:
-		velocity.x += 100 * damage_dir
+		#Kan behöva ändras
+		velocity.x += 50 * damage_dir
 	else:
 		slash()
 		move_x_axis(delta)
@@ -76,7 +77,6 @@ func move_x_axis(delta):
 	# Ändra damage dir beroende på vilket håll man går åt
 	if direction != 0:
 		damage_dir = -direction
-		print(damage_dir)
 	
 	if direction:
 		velocity.x = direction * speed
@@ -112,6 +112,7 @@ func get_damage_direction():
 	return damage_dir
 
 func take_damage(amount):
+	print("Take damage")
 	$KnockbackTimer.start()
 	knockback = true
 	

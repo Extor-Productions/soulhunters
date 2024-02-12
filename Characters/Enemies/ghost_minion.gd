@@ -3,54 +3,78 @@ extends CharacterBody2D
 var player = null
 var gravity : int = 900
 var speed : int = 100
+
 var chase = false
 var launch_back = false
+
 var stop = false
 
+var damage := 1
+var health := 5
+
 func _physics_process(delta):
+	if health <= 0:
+		queue_free()
 	
-	#pausa allt
-	if stop == false:
-		#spöket gravitation
-		if not is_on_floor() and chase == false:
-			#collision_mask = 4
-			velocity.y += gravity * delta
-		
-		#spöket jagar
-		if chase == true and launch_back == false:
-			#collision_mask = 0
-			var direction = (player.position - position).normalized()
-			velocity = direction * speed
-		
-		#skickar till baka spelaren
-		if launch_back == true:
-			var distance = (player.position - position).normalized()
-			velocity = distance * speed * -2
-		
-		move_and_slide()
+	#Saker den ska göra:
+	#Chase player : klar
+	#Launch back : klar
+	#Stop : klar
+	
+	if chase:
+		#Chase player
+		if player != null:
+			var dir = global_position.direction_to(player.global_position)
+			
+			velocity = dir * speed
+	elif launch_back:
+		if player != null:
+			var dir = -(global_position.direction_to(player.global_position))
+			
+			velocity = dir * (speed / 2)
+	else:
+		velocity = Vector2.ZERO
+	
+	move_and_slide()
+
+func take_damage(amount):
+	_on_hit_box_body_entered(null)
+	
+	health -= amount
 
 #känner när spelaren går inom arean
 func _on_player_detect_body_shape_entered(body):
-	if body.name == Game.player_name:
+	if body.is_in_group("Player"):
 		player = body
 		chase = true
 
 #när spelaren lämnar arean
 func _on_player_detect_body_shape_exited(body):
-	if body.name == Game.player_name:
-		chase = false
-		velocity.x = 0
+	if body.is_in_group("Player"):
+		#Ta bort spelaren från spöket
+		if !launch_back:
+			player = null
+			chase = false
 
-#kollar när spöket nuddar spelaren
+#Kollar när spöket har attackerat spelaren
 func _on_hit_box_body_entered(body):
-	if body.name == Game.player_name:
-		Game.player_health  -= 1
+	if body.is_in_group("Player"):
+		$LaunchTimer.start()
+		
+		if !launch_back:
+			chase = false
+		
 		launch_back = true
 
-#sträckan man skickas till baka när man skadar spelare
-func _on_luanch_back_area_body_exited(body):
-		if body.name == Game.player_name:
-			launch_back = false
-			stop = true
-			await get_tree().create_timer(1).timeout
-			stop = false
+func get_damage():
+	return damage
+
+func _on_launch_timer_timeout():
+	launch_back = false
+	
+	if player != null:
+		chase = true
+
+func _on_hurt_box_area_entered(area: Area2D):
+	if area.is_in_group("Player"):
+		take_damage(area.get_parent().get_damage())

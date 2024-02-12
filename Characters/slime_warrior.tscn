@@ -136,7 +136,7 @@ size = Vector2(18, 12)
 
 [node name="slime_warrior" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 13
-collision_mask = 9
+collision_mask = 13
 script = ExtResource("1_sccvk")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -183,7 +183,7 @@ position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_14vx7")
 
 [node name="KnockbackTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.1
 one_shot = true
 
 [connection signal="area_entered" from="my_hurt_box" to="." method="_on_my_hurt_box_area_entered"]
