@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://byn484pybr2lp"]
 
-[ext_resource type="Texture2D" uid="uid://cgxaqrtrulj1p" path="res://GameAssets/StartButton.png" id="1_0phoq"]
-[ext_resource type="Script" path="res://main_meny.gd" id="1_eclv3"]
-[ext_resource type="Texture2D" uid="uid://ed430fbfsmmc" path="res://GameAssets/QuitButton.png" id="3_gq87h"]
-[ext_resource type="Texture2D" uid="uid://dke4u84j8wfcm" path="res://GameAssets/NameSoulHunters.png" id="3_m1crf"]
+[ext_resource type="Script" path="res://Menus/main_meny.gd" id="1_aqfv0"]
+[ext_resource type="Texture2D" uid="uid://cgxaqrtrulj1p" path="res://GameAssets/StartButton.png" id="2_rjl7k"]
+[ext_resource type="Texture2D" uid="uid://ed430fbfsmmc" path="res://GameAssets/QuitButton.png" id="3_1f7e0"]
+[ext_resource type="Texture2D" uid="uid://dke4u84j8wfcm" path="res://GameAssets/NameSoulHunters.png" id="4_ffj7e"]
 
 [node name="MainMeny" type="Node2D"]
-script = ExtResource("1_eclv3")
+script = ExtResource("1_aqfv0")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 offset_top = 1.52588e-05
 offset_right = 1206.0
 offset_bottom = 681.0
@@ -19,7 +19,7 @@ offset_top = 312.0
 offset_right = 431.0
 offset_bottom = 323.0
 scale = Vector2(10, 10)
-texture_normal = ExtResource("1_0phoq")
+texture_normal = ExtResource("2_rjl7k")
 stretch_mode = 4
 
 [node name="Quit" type="TextureButton" parent="."]
@@ -28,12 +28,12 @@ offset_top = 432.0
 offset_right = 499.0
 offset_bottom = 444.0
 scale = Vector2(10, 10)
-texture_normal = ExtResource("3_gq87h")
+texture_normal = ExtResource("3_1f7e0")
 
-[node name="NameSoulHunters" type="Sprite2D" parent="."]
+[node name="Title" type="Sprite2D" parent="."]
 position = Vector2(568, 120)
 scale = Vector2(10, 10)
-texture = ExtResource("3_m1crf")
+texture = ExtResource("4_ffj7e")
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

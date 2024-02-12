@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dvgyxitgmm12"]
 
 [ext_resource type="Texture2D" uid="uid://bfkexrthv8j6y" path="res://GameAssets/GhostMinion.png" id="1_r5k4e"]
-[ext_resource type="Script" path="res://ghost_minion.gd" id="1_w5bqd"]
+[ext_resource type="Script" path="res://Characters/Enemies/ghost_minion.gd" id="1_w5bqd"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_fw7s2"]
 
@@ -40,6 +40,8 @@ animation = &"Idle"
 autoplay = "Idle"
 
 [node name="player_detect" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_detect"]
 shape = SubResource("CircleShape2D_vnrww")

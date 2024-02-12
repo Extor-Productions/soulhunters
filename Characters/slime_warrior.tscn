@@ -1,8 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://d4dj6v1xp1jek"]
 
-[ext_resource type="Script" path="res://slime_warrior.gd" id="1_sccvk"]
-[ext_resource type="Script" path="res://Duplicate/my_hit_box.gd" id="2_3bpry"]
-[ext_resource type="Texture2D" uid="uid://cjqjc248drb13" path="res://GameAssets/pixil-frame-0_6-1.png" id="2_w1y70"]
+[ext_resource type="Script" path="res://Characters/slime_warrior.gd" id="1_sccvk"]
+[ext_resource type="Texture2D" uid="uid://cjqjc248drb13" path="res://GameAssets/Slime.png" id="2_48hf1"]
 [ext_resource type="Texture2D" uid="uid://daxyo8j13fegy" path="res://GameAssets/Slash.png" id="3_mestp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_usnm3"]
@@ -29,7 +28,7 @@ region = Rect2(31, 16, 31, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_w1y70")
+"texture": ExtResource("2_48hf1")
 }],
 "loop": true,
 "name": &"Idle",
@@ -132,8 +131,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfan8"]
 size = Vector2(16, 15.75)
 
-[node name="slime_warrior" type="CharacterBody2D"]
-collision_mask = 12
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14vx7"]
+size = Vector2(18, 12)
+
+[node name="slime_warrior" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 13
+collision_mask = 9
 script = ExtResource("1_sccvk")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -148,25 +151,40 @@ zoom = Vector2(4, 4)
 position = Vector2(7.73289, 2.08165e-12)
 scale = Vector2(-1.01723, 1)
 sprite_frames = SubResource("SpriteFrames_qcl4g")
-animation = &"new_animation"
+animation = &"Idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_gxcch")
 }
 
-[node name="my_hit_box" type="Area2D" parent="."]
-script = ExtResource("2_3bpry")
+[node name="my_hit_box" type="Area2D" parent="." groups=["Player"]]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="my_hit_box"]
 position = Vector2(16, 0.125)
 shape = SubResource("RectangleShape2D_kfan8")
 disabled = true
 
-[node name="my_hit_box2" type="Area2D" parent="."]
-script = ExtResource("2_3bpry")
+[node name="my_hit_box2" type="Area2D" parent="." groups=["Player"]]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="my_hit_box2"]
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_kfan8")
 disabled = true
+
+[node name="my_hurt_box" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="my_hurt_box"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_14vx7")
+
+[node name="KnockbackTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="area_entered" from="my_hurt_box" to="." method="_on_my_hurt_box_area_entered"]
+[connection signal="timeout" from="KnockbackTimer" to="." method="_on_knockback_timer_timeout"]

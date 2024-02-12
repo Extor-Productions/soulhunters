@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dtope30u7clqe"]
 
-[ext_resource type="Script" path="res://character_select_screen.gd" id="1_6pbif"]
+[ext_resource type="Script" path="res://Menus/character_select_screen.gd" id="1_6pbif"]
 [ext_resource type="Texture2D" uid="uid://dd8obfakhpb6a" path="res://GameAssets/ReadyButton.png" id="2_dfk08"]
 [ext_resource type="Texture2D" uid="uid://dcfwl7eaucqm2" path="res://GameAssets/SelectionArrow.png" id="3_hq2k5"]
 [ext_resource type="Texture2D" uid="uid://ijefyrewif2p" path="res://GameAssets/Slime.png" id="4_g7iyt"]
