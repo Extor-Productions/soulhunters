@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://duu0fboxtwwaf"]
+
+[ext_resource type="Script" path="res://Characters/Health/Health_Bar.gd" id="1_m5vid"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_m5vid")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(1, 0, 0, 1)
+self_modulate = Color(0.733333, 0, 0, 1)
+texture_filter = 2
+layout_mode = 0
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+max_value = 10.0
+step = 1.0
+value = 10.0
+show_percentage = false

@@ -10,8 +10,9 @@ extends CharacterBody2D
 var health := 10
 
 @onready var up_slash = $my_hit_box2
+@onready var health_bar = $Health
 
-var damage := 1
+var damage := -1
 var damage_dir = 0
 var knockback = false
 
@@ -29,6 +30,8 @@ func exist_start():
 
 func _ready():
 	exist_start()
+	
+	health_bar.set_health(health)
 
 func _physics_process(delta):
 	_gravity(delta)
@@ -112,11 +115,11 @@ func get_damage_direction():
 	return damage_dir
 
 func take_damage(amount):
-	print("Take damage")
 	$KnockbackTimer.start()
 	knockback = true
 	
-	health -= amount
+	health += amount
+	health_bar.change_health(amount)
 
 func _on_knockback_timer_timeout():
 	knockback = false

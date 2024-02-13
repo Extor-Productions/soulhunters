@@ -3,7 +3,7 @@ extends StaticBody2D
 
 var my_position = Vector2.ZERO
 var health = 5
-var damage = 1
+var damage = -1
 
 var back = false
 
@@ -28,7 +28,7 @@ func take_damage(amount, dir):
 	#Gör så att sniglen är odödlig en stund efter den har tagit skada
 	$enemy_hurt_box/CollisionShape2D.set_deferred("disabled", true)
 	
-	health -= amount
+	health += amount
 
 func _on_korvtimer_timeout():
 	emit_signal("knockback", false, 0)

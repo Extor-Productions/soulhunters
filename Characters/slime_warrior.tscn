@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://d4dj6v1xp1jek"]
+[gd_scene load_steps=16 format=3 uid="uid://d4dj6v1xp1jek"]
 
 [ext_resource type="Script" path="res://Characters/slime_warrior.gd" id="1_sccvk"]
 [ext_resource type="Texture2D" uid="uid://cjqjc248drb13" path="res://GameAssets/Slime.png" id="2_48hf1"]
 [ext_resource type="Texture2D" uid="uid://daxyo8j13fegy" path="res://GameAssets/Slash.png" id="3_mestp"]
+[ext_resource type="PackedScene" uid="uid://duu0fboxtwwaf" path="res://Characters/Health/Health.tscn" id="4_bfbdg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_usnm3"]
 atlas = ExtResource("3_mestp")
@@ -185,6 +186,8 @@ shape = SubResource("RectangleShape2D_14vx7")
 [node name="KnockbackTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="Health" parent="." instance=ExtResource("4_bfbdg")]
 
 [connection signal="area_entered" from="my_hurt_box" to="." method="_on_my_hurt_box_area_entered"]
 [connection signal="timeout" from="KnockbackTimer" to="." method="_on_knockback_timer_timeout"]

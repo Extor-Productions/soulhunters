@@ -9,7 +9,7 @@ var launch_back = false
 
 var stop = false
 
-var damage := 1
+var damage := -1
 var health := 5
 
 func _physics_process(delta):
@@ -46,15 +46,16 @@ func take_damage(amount):
 func _on_player_detect_body_shape_entered(body):
 	if body.is_in_group("Player"):
 		player = body
+		launch_back = false
 		chase = true
 
 #när spelaren lämnar arean
 func _on_player_detect_body_shape_exited(body):
 	if body.is_in_group("Player"):
 		#Ta bort spelaren från spöket
-		if !launch_back:
-			player = null
-			chase = false
+		player = null
+		chase = false
+		launch_back = false
 
 #Kollar när spöket har attackerat spelaren
 func _on_hit_box_body_entered(body):
