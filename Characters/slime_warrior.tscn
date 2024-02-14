@@ -61,7 +61,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("my_hit_box/CollisionShape2D:disabled")
+tracks/0/path = NodePath("HitBox/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -89,7 +89,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("my_hit_box/CollisionShape2D:disabled")
+tracks/0/path = NodePath("HitBox/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -158,29 +158,29 @@ libraries = {
 "": SubResource("AnimationLibrary_gxcch")
 }
 
-[node name="my_hit_box" type="Area2D" parent="." groups=["Player"]]
+[node name="HitBox" type="Area2D" parent="." groups=["Player"]]
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="my_hit_box"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(16, 0.125)
 shape = SubResource("RectangleShape2D_kfan8")
 disabled = true
 
-[node name="my_hit_box2" type="Area2D" parent="." groups=["Player"]]
+[node name="HitBox2" type="Area2D" parent="." groups=["Player"]]
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="my_hit_box2"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox2"]
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_kfan8")
 disabled = true
 
-[node name="my_hurt_box" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="my_hurt_box"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_14vx7")
 
@@ -190,5 +190,5 @@ one_shot = true
 
 [node name="Health" parent="." instance=ExtResource("4_bfbdg")]
 
-[connection signal="area_entered" from="my_hurt_box" to="." method="_on_my_hurt_box_area_entered"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_my_hurt_box_area_entered"]
 [connection signal="timeout" from="KnockbackTimer" to="." method="_on_knockback_timer_timeout"]
