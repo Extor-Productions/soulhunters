@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var spawn_point = $Spawn
+@export var spawn_point: Marker2D
 
 var player = null
 var gravity : int = 900
@@ -21,7 +21,7 @@ func _physics_process(delta):
 	#Saker den ska göra:
 	#Chase player : klar
 	#Launch back : klar
-	#Stop : klar
+	#Stop : klar / Återgå till spawn
 	
 	if chase:
 		#Chase player
@@ -35,8 +35,20 @@ func _physics_process(delta):
 			
 			velocity = dir * (speed / 2)
 	else:
-		velocity = Vector2.ZERO
-		#velocity.y += gravity / 2a
+		# Återgår till spawn
+		if spawn_point != null:
+			var dir = global_position.direction_to(spawn_point.global_position)
+			
+			if global_position.distance_to(spawn_point.global_position) <= 0.5 :
+				return
+			
+			while global_position.distance_to(spawn_point.global_position) != 0:
+				velocity = dir * speed
+				
+				move_and_slide()
+				await get_tree().create_timer(1).timeout
+			
+			#velocity = Vector2.ZERO
 	
 	move_and_slide()
 
@@ -48,8 +60,6 @@ func take_damage(amount):
 #känner när spelaren går inom arean
 func _on_player_detect_body_shape_entered(body):
 	if body.is_in_group("Player"):
-		collision_mask = 0
-		
 		player = body
 		launch_back = false
 		chase = true
@@ -57,9 +67,6 @@ func _on_player_detect_body_shape_entered(body):
 #när spelaren lämnar arean
 func _on_player_detect_body_shape_exited(body):
 	if body.is_in_group("Player"):
-		# Återgår till spawn
-		collision_mask = 3
-		
 		#Ta bort spelaren från spöket
 		player = null
 		chase = false

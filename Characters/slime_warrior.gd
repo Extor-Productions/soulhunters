@@ -9,7 +9,7 @@ extends CharacterBody2D
 
 var health := 10
 
-@onready var up_slash = $my_hit_box2
+@onready var up_slash = $HitBox2
 @onready var health_bar = $Health
 
 var damage := -1

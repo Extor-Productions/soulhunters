@@ -90,5 +90,11 @@ rotation = 1.5708
 position = Vector2(0, 5)
 rotation = -3.14159
 
-[node name="ghost_minion" parent="." instance=ExtResource("5_sheh6")]
+[node name="ghost_minion" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("5_sheh6")]
+position = Vector2(317, 70)
+spawn_point = NodePath("../Ghost_Spawns/Ghost_1")
+
+[node name="Ghost_Spawns" type="Node" parent="."]
+
+[node name="Ghost_1" type="Marker2D" parent="Ghost_Spawns"]
 position = Vector2(317, 70)
