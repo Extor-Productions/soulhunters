@@ -38,8 +38,8 @@ animation = &"Run"
 
 [node name="enemy_hurt_box" type="Area2D" parent="." groups=["Enemy"]]
 visible = false
-collision_layer = 0
-collision_mask = 8
+collision_layer = 16
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hurt_box"]
 position = Vector2(0, 2)
@@ -47,8 +47,8 @@ shape = SubResource("CircleShape2D_tcndc")
 
 [node name="enemy_hit_box" type="Area2D" parent="."]
 visible = false
-collision_layer = 16
-collision_mask = 0
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="enemy_hit_box"]
 position = Vector2(0, 2)

@@ -35,8 +35,8 @@ func _physics_process(delta):
 			
 			velocity = dir * (speed / 2)
 	else:
-		velocity.x = 0
-		velocity.y += gravity / 2
+		velocity = Vector2.ZERO
+		#velocity.y += gravity / 2a
 	
 	move_and_slide()
 
@@ -58,6 +58,7 @@ func _on_player_detect_body_shape_entered(body):
 func _on_player_detect_body_shape_exited(body):
 	if body.is_in_group("Player"):
 		# Återgår till spawn
+		collision_mask = 3
 		
 		#Ta bort spelaren från spöket
 		player = null
