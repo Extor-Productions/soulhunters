@@ -13,7 +13,7 @@ var health := 10
 @onready var health_bar = $Health
 
 var damage := -1
-var damage_dir = 0
+var damage_dir = 1
 var knockback = false
 
 #kollar om det är rätt klass

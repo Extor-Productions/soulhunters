@@ -16,5 +16,7 @@ func _process(delta):
 func _knockback(knockback, dir):
 	if knockback:
 		speed = 70 * dir
+		if speed > 0:
+			speed = speed * 2
 	else:
 		speed = 50

@@ -136,8 +136,7 @@ size = Vector2(16, 15.75)
 size = Vector2(18, 12)
 
 [node name="slime_warrior" type="CharacterBody2D" groups=["Player"]]
-collision_layer = 13
-collision_mask = 13
+collision_mask = 7
 script = ExtResource("1_sccvk")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -160,8 +159,8 @@ libraries = {
 }
 
 [node name="my_hit_box" type="Area2D" parent="." groups=["Player"]]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="my_hit_box"]
 position = Vector2(16, 0.125)
@@ -169,8 +168,8 @@ shape = SubResource("RectangleShape2D_kfan8")
 disabled = true
 
 [node name="my_hit_box2" type="Area2D" parent="." groups=["Player"]]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="my_hit_box2"]
 position = Vector2(0, 16)
@@ -178,6 +177,8 @@ shape = SubResource("RectangleShape2D_kfan8")
 disabled = true
 
 [node name="my_hurt_box" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="my_hurt_box"]
 position = Vector2(0, 2)

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var spawn_point = $Spawn
+
 var player = null
 var gravity : int = 900
 var speed : int = 100
@@ -33,7 +35,8 @@ func _physics_process(delta):
 			
 			velocity = dir * (speed / 2)
 	else:
-		velocity = Vector2.ZERO
+		velocity.x = 0
+		velocity.y += gravity / 2
 	
 	move_and_slide()
 
@@ -45,6 +48,8 @@ func take_damage(amount):
 #känner när spelaren går inom arean
 func _on_player_detect_body_shape_entered(body):
 	if body.is_in_group("Player"):
+		collision_mask = 0
+		
 		player = body
 		launch_back = false
 		chase = true
@@ -52,6 +57,8 @@ func _on_player_detect_body_shape_entered(body):
 #när spelaren lämnar arean
 func _on_player_detect_body_shape_exited(body):
 	if body.is_in_group("Player"):
+		# Återgår till spawn
+		
 		#Ta bort spelaren från spöket
 		player = null
 		chase = false

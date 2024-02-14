@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Characters/Enemies/ghost_minion.gd" id="1_w5bqd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aw4ah"]
-size = Vector2(6, 8)
+size = Vector2(6, 14)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t64ln"]
 animations = [{
@@ -29,11 +29,12 @@ radius = 6.0
 height = 14.0
 
 [node name="ghost_minion" type="CharacterBody2D"]
-collision_layer = 5
-collision_mask = 5
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_w5bqd")
 
 [node name="floor_distance2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_aw4ah")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -42,18 +43,20 @@ animation = &"Idle"
 autoplay = "Idle"
 
 [node name="player_detect" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_detect"]
 shape = SubResource("CircleShape2D_vnrww")
 
 [node name="hit_box" type="Area2D" parent="." groups=["Enemy"]]
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
 shape = SubResource("CapsuleShape2D_7nrth")
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CapsuleShape2D_wo3fx")
@@ -61,6 +64,8 @@ shape = SubResource("CapsuleShape2D_wo3fx")
 [node name="LaunchTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="Spawn" type="Marker2D" parent="."]
 
 [connection signal="body_entered" from="player_detect" to="." method="_on_player_detect_body_shape_entered"]
 [connection signal="body_exited" from="player_detect" to="." method="_on_player_detect_body_shape_exited"]
