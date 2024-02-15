@@ -103,7 +103,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pctss")
 }],
-"loop": false,
+"loop": true,
 "name": &"upslash",
 "speed": 20.0
 }]
@@ -141,10 +141,22 @@ tracks/2/path = NodePath("HitBox2/CollisionShape2D2:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": []
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("Verticall/YSlashSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
 }
 
 [sub_resource type="Animation" id="Animation_7l8df"]
@@ -191,7 +203,7 @@ tracks/2/keys = {
 resource_name = "up_slash"
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("HitBox2/CollisionShape2D2:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -199,12 +211,12 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, true]
+"values": [false, true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("YSlashSprite:animation")
+tracks/1/path = NodePath("Verticall/YSlashSprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -216,7 +228,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("YSlashSprite:frame")
+tracks/2/path = NodePath("Verticall/YSlashSprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -227,15 +239,15 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("YSlashSprite:visible")
+tracks/3/enabled = true
+tracks/3/path = NodePath("Verticall/YSlashSprite:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gxcch"]
@@ -274,13 +286,16 @@ scale = Vector2(-1.017, 1)
 sprite_frames = SubResource("SpriteFrames_qcl4g")
 animation = &"idle"
 
-[node name="YSlashSprite" type="AnimatedSprite2D" parent="."]
+[node name="Verticall" type="Node2D" parent="."]
+
+[node name="YSlashSprite" type="AnimatedSprite2D" parent="Verticall"]
 position = Vector2(3.48803e-07, 0.0203227)
-rotation = 1.5708
-scale = Vector2(-1.532, 1)
+rotation = -1.57079
+scale = Vector2(1.532, -1)
 sprite_frames = SubResource("SpriteFrames_qcl4g")
 animation = &"upslash"
-frame = 5
+frame = 1
+frame_progress = 0.147269
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

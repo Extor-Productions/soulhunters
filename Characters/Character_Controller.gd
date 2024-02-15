@@ -10,6 +10,9 @@ extends CharacterBody2D
 
 var knockback = false
 
+func _ready():
+	$AnimationPlayer.play("RESET")
+
 func _physics_process(delta):
 	move(delta)
 	
