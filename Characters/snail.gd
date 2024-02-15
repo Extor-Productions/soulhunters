@@ -26,7 +26,7 @@ func take_damage(amount, dir):
 	Indesturcteble_timer.start()
 	
 	#Gör så att sniglen är odödlig en stund efter den har tagit skada
-	$enemy_hurt_box/CollisionShape2D.set_deferred("disabled", true)
+	$HurtBox/CollisionShape2D.set_deferred("disabled", true)
 	
 	health += amount
 
@@ -35,7 +35,7 @@ func _on_korvtimer_timeout():
 
 func _on_indestrukteble_timer_timeout():
 	set_collision_layer(0)
-	$enemy_hurt_box/CollisionShape2D.set_deferred("disabled", false)
+	$HurtBox/CollisionShape2D.set_deferred("disabled", false)
 
 func _on_enemy_hit_box_area_entered(area: Area2D):
 	if area.is_in_group("Player"):

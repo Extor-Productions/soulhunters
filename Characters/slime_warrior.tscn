@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://d4dj6v1xp1jek"]
+[gd_scene load_steps=18 format=3 uid="uid://d4dj6v1xp1jek"]
 
-[ext_resource type="Script" path="res://Characters/slime_warrior.gd" id="1_sccvk"]
+[ext_resource type="Script" path="res://Characters/Character_Controller.gd" id="1_t3tc8"]
 [ext_resource type="Texture2D" uid="uid://cjqjc248drb13" path="res://GameAssets/Slime.png" id="2_48hf1"]
+[ext_resource type="PackedScene" uid="uid://duivmv6t4uk2y" path="res://Characters/Movement/Movment_Node.tscn" id="2_slkjq"]
 [ext_resource type="Texture2D" uid="uid://daxyo8j13fegy" path="res://GameAssets/Slash.png" id="3_mestp"]
+[ext_resource type="PackedScene" uid="uid://ca15vyuafc0p6" path="res://Characters/Class_Scripts/Warrior.tscn" id="3_sklep"]
 [ext_resource type="PackedScene" uid="uid://duu0fboxtwwaf" path="res://Characters/Health/Health.tscn" id="4_bfbdg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_usnm3"]
@@ -137,7 +139,12 @@ size = Vector2(18, 12)
 
 [node name="slime_warrior" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 7
-script = ExtResource("1_sccvk")
+script = ExtResource("1_t3tc8")
+
+[node name="Movment_Node" parent="." instance=ExtResource("2_slkjq")]
+gravity = 900.0
+
+[node name="Warrior" parent="." instance=ExtResource("3_sklep")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 rotation = 6.28319

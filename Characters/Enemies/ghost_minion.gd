@@ -53,9 +53,13 @@ func _physics_process(delta):
 	move_and_slide()
 
 func take_damage(amount):
-	_on_hit_box_body_entered(null)
+	health += amount
 	
-	health -= amount
+	$LaunchTimer.start()
+	if !launch_back:
+		chase = false
+		
+	launch_back = true
 
 #känner när spelaren går inom arean
 func _on_player_detect_body_shape_entered(body):
@@ -73,7 +77,7 @@ func _on_player_detect_body_shape_exited(body):
 		launch_back = false
 
 #Kollar när spöket har attackerat spelaren
-func _on_hit_box_body_entered(body):
+func _on_hurt_box_body_entered(body):
 	if body.is_in_group("Player"):
 		$LaunchTimer.start()
 		
@@ -91,6 +95,6 @@ func _on_launch_timer_timeout():
 	if player != null:
 		chase = true
 
-func _on_hurt_box_area_entered(area: Area2D):
+func _on_hit_box_area_entered(area: Area2D):
 	if area.is_in_group("Player"):
 		take_damage(area.get_parent().get_damage())

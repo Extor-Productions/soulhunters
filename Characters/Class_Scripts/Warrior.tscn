@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca15vyuafc0p6"]
+
+[ext_resource type="Script" path="res://Characters/Class_Scripts/Warrior.gd" id="1_ukcen"]
+
+[node name="Warrior" type="Node2D"]
+script = ExtResource("1_ukcen")
+
+[node name="Attack1_Cooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Attack1_Cooldown" to="." method="_on_attack_1_cooldown_timeout"]
