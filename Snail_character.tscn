@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bx6fve0qwbiaj"]
 
-[ext_resource type="Script" path="res://Characters/Character_Movement.gd" id="1_2aevb"]
+[ext_resource type="Script" path="res://Characters/Old_Character_Code/Character_Movement.gd" id="1_2aevb"]
 [ext_resource type="Texture2D" uid="uid://co71yqh57of3s" path="res://GameAssets/Snail.png" id="2_2xmt6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ao2jw"]
