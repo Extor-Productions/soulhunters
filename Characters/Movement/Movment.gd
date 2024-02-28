@@ -8,6 +8,8 @@ signal dashing
 @export var knockback_force: int = 5000
 var knockback_direction: int = -1
 
+@export var dash_force: int = 1000
+
 @export var gravity: float = 900
 
 @export var jump_height: int = 255
@@ -38,7 +40,10 @@ func move(delta: float):
 
 func dash(delta):
 	if Input.is_action_just_pressed("dash"):
-		pass
+		
+		parent.velocity.x += dash_force * -knockback_direction
+	
+	parent.move_and_slide()
 
 func apply_gravity(delta):
 	if not parent.is_on_floor():

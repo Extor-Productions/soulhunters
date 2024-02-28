@@ -15,6 +15,7 @@ func _ready():
 
 func _physics_process(delta):
 	move(delta)
+	movement_controller.dash(delta)
 	
 	warrior_node.slash()
 
@@ -28,8 +29,8 @@ func move(delta: float):
 	else:
 		movement_controller.knockback(delta)
 
-func take_damage(damage_amount: int, knockback: bool):
-	if knockback:
+func take_damage(damage_amount: int, should_knockback: bool):
+	if should_knockback:
 		#Aktivera knockback
 		knockback = true
 		$KnockbackTimer.start()
