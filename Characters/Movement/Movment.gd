@@ -1,12 +1,14 @@
 extends Node2D
 
+signal dashing
+
 #Default values
 @export var move_speed: int = 7500
 
 @export var knockback_force: int = 5000
 var knockback_direction: int = -1
 
-@export var gravity: float = 9.81
+@export var gravity: float = 900
 
 @export var jump_height: int = 255
 @export var max_jumps: int = 2
@@ -34,15 +36,21 @@ func move(delta: float):
 	
 	parent.move_and_slide()
 
+func dash(delta):
+	if Input.is_action_just_pressed("dash"):
+		pass
+
 func apply_gravity(delta):
 	if not parent.is_on_floor():
 		parent.velocity.y += gravity * delta
 
-func jump():
+func jump(delta):
 	if parent.is_on_floor():
 		current_jumps = 0
 	
+	
 	if Input.is_action_just_pressed("Jump") and current_jumps < max_jumps:
+		
 			if current_jumps == 0:
 				parent.velocity.y -= jump_height
 				#Double Jump

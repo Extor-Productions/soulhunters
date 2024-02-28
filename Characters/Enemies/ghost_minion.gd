@@ -10,6 +10,7 @@ var chase = false
 var launch_back = false
 
 var stop = false
+var return_spawn = false
 
 var damage := -1
 var health := 5
@@ -34,12 +35,13 @@ func _physics_process(delta):
 			var dir = -(global_position.direction_to(player.global_position))
 			
 			velocity = dir * (speed / 2)
-	else:
+	elif return_spawn:
 		# Återgår till spawn
 		if spawn_point != null:
 			var dir = global_position.direction_to(spawn_point.global_position)
 			
-			if global_position.distance_to(spawn_point.global_position) <= 0.5 :
+			if global_position.distance_to(spawn_point.global_position) <= 1:
+				return_spawn = false
 				return
 			
 			while global_position.distance_to(spawn_point.global_position) != 0:
@@ -48,7 +50,8 @@ func _physics_process(delta):
 				move_and_slide()
 				await get_tree().create_timer(1).timeout
 			
-			#velocity = Vector2.ZERO
+	else:
+		velocity = Vector2.ZERO
 	
 	move_and_slide()
 
@@ -75,6 +78,8 @@ func _on_player_detect_body_shape_exited(body):
 		player = null
 		chase = false
 		launch_back = false
+		
+		return_spawn = true
 
 #Kollar när spöket har attackerat spelaren
 func _on_hurt_box_body_entered(body):

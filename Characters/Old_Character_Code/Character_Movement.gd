@@ -29,11 +29,11 @@ func _physics_process(delta):
 		jump_timer += delta
 
 	if Input.is_action_pressed("Jump") and not jumping:
-		velocity.y += -(jump_force * jump_force)
+		velocity.y -= (jump_force * jump_force)
 		jumping = true
 		
 		while(jumping):
-			velocity.y += -(jump_force * jump_force)
+			velocity.y -= (jump_force * jump_force)
 			
 			await get_tree().create_timer(1).timeout
 	

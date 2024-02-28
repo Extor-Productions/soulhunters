@@ -268,7 +268,7 @@ collision_mask = 7
 script = ExtResource("1_t3tc8")
 
 [node name="Movment_Node" parent="." instance=ExtResource("2_slkjq")]
-gravity = 900.0
+jump_height = 100
 
 [node name="Warrior" parent="." instance=ExtResource("3_sklep")]
 
@@ -289,13 +289,12 @@ animation = &"idle"
 [node name="Verticall" type="Node2D" parent="."]
 
 [node name="YSlashSprite" type="AnimatedSprite2D" parent="Verticall"]
-position = Vector2(3.48803e-07, 0.0203227)
+position = Vector2(-5.03152e-05, 8.09507)
 rotation = -1.57079
-scale = Vector2(1.532, -1)
+scale = Vector2(1.01105, -1)
 sprite_frames = SubResource("SpriteFrames_qcl4g")
 animation = &"upslash"
-frame = 1
-frame_progress = 0.147269
+frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

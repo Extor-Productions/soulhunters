@@ -24,7 +24,7 @@ func move(delta: float):
 	
 	if not knockback:
 		movement_controller.move(delta)
-		movement_controller.jump()
+		movement_controller.jump(delta)
 	else:
 		movement_controller.knockback(delta)
 
