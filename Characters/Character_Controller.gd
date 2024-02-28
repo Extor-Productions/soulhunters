@@ -28,10 +28,11 @@ func move(delta: float):
 	else:
 		movement_controller.knockback(delta)
 
-func take_damage(damage_amount: int):
-	#Aktivera knockback
-	knockback = true
-	$KnockbackTimer.start()
+func take_damage(damage_amount: int, knockback: bool):
+	if knockback:
+		#Aktivera knockback
+		knockback = true
+		$KnockbackTimer.start()
 	
 	health += damage_amount
 	health_bar.change_health(damage_amount)
@@ -42,7 +43,7 @@ func _on_knockback_timer_timeout():
 
 func _on_my_hurt_box_area_entered(area: Area2D):
 	if area.is_in_group("Enemy"):
-		take_damage(area.get_parent().get_damage())
+		take_damage(area.get_parent().get_damage(), area.get_parent().should_knockback())
 
 func get_damage():
 	return damage

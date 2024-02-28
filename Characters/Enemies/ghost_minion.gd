@@ -94,6 +94,9 @@ func _on_hurt_box_body_entered(body):
 func get_damage():
 	return damage
 
+func should_knockback():
+	return false
+
 func _on_launch_timer_timeout():
 	launch_back = false
 	

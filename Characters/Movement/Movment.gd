@@ -3,7 +3,7 @@ extends Node2D
 signal dashing
 
 #Default values
-@export var move_speed: int = 7500
+@export var move_speed: int = 10000
 
 @export var knockback_force: int = 5000
 var knockback_direction: int = -1

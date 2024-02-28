@@ -33,6 +33,9 @@ func take_damage(amount, dir):
 func _on_korvtimer_timeout():
 	emit_signal("knockback", false, 0)
 
+func should_knockback():
+	return true
+
 func _on_indestrukteble_timer_timeout():
 	set_collision_layer(0)
 	$HurtBox/CollisionShape2D.set_deferred("disabled", false)
