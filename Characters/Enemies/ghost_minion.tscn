@@ -66,4 +66,5 @@ wait_time = 0.5
 one_shot = true
 
 [connection signal="body_entered" from="player_detect" to="." method="_on_player_detect_body_entered"]
-[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_exited" from="player_detect" to="." method="_on_player_detect_body_exited"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
