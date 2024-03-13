@@ -27,7 +27,7 @@ func exit(new_state: States):
 func _physics_process(delta):
 	match current_state:
 		States.Return:
-			pass
+			Return(delta)
 		States.Idle:
 			idle(delta)
 		States.Launch:
@@ -49,7 +49,15 @@ func chase(delta: float):
 
 func Return(delta: float):
 	#Återgå till spawn pungt
-	pass
+	if spawn_point == null:
+		exit(States.Idle)
+	else:
+		var spawn_direction = global_position.direction_to(spawn_point.global_position)
+		
+		velocity = spawn_direction * speed * delta
+		
+		if global_position.distance_to(spawn_point.global_position) <= 1 and global_position.distance_to(spawn_point.global_position) >= -1:
+			exit(States.Idle)
 
 func take_damage(amount):
 	health += amount
