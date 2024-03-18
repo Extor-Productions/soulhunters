@@ -20,7 +20,6 @@ var health := 5
 
 func exit(new_state: States):
 	velocity = Vector2.ZERO
-	player = null
 	
 	current_state = new_state
 
@@ -31,11 +30,17 @@ func _physics_process(delta):
 		States.Idle:
 			idle(delta)
 		States.Launch:
-			pass
+			launch(delta)
 		States.Chase:
 			chase(delta)
 	
 	move_and_slide()
+
+func launch(delta: float):
+	#Skicka tillbaka spöket när den har attackerat
+	var launch_direction = -(global_position.direction_to(player.global_position))
+	
+	velocity = (speed / 2) * launch_direction * delta
 
 func idle(delta: float):
 	#Åk ner i marken
@@ -77,5 +82,18 @@ func _on_player_detect_body_entered(body):
 	
 	player = body
 
-func _on_player_detect_body_exited(body):
-	exit(States.Return)
+func _on_player_detect_body_exited(_body):
+	player = null
+	
+	if spawn_point != null:
+		exit(States.Return)
+	else:
+		exit(States.Idle)
+
+func _on_hurt_box_body_entered(body):
+	$LaunchTimer.start()
+	exit(States.Launch)
+
+func _on_launch_timer_timeout():
+	if current_state == States.Launch:
+		exit(States.Chase)
