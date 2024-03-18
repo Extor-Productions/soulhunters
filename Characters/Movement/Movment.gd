@@ -44,6 +44,7 @@ func move(delta: float):
 		parent.move_and_slide()
 
 func dash(delta):
+<<<<<<< Updated upstream
 	if Input.is_action_just_pressed("dash") and !dashing:
 		dash_timer.start()
 		dash_timer2.start()
@@ -53,6 +54,11 @@ func dash(delta):
 			
 			parent.velocity.x += dash_force * delta
 			await get_tree().create_timer(.1).timeout
+=======
+	if Input.is_action_just_pressed("dash"):
+		parent.velocity.x += 1000000 * -knockback_direction
+	
+>>>>>>> Stashed changes
 	parent.move_and_slide()
 
 func apply_gravity(delta):
