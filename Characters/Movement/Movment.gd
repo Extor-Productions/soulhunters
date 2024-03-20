@@ -44,7 +44,6 @@ func move(delta: float):
 		parent.move_and_slide()
 
 func dash(delta):
-<<<<<<< Updated upstream
 	if Input.is_action_just_pressed("dash") and !dashing:
 		dash_timer.start()
 		dash_timer2.start()
