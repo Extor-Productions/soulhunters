@@ -1,0 +1,156 @@
+[gd_scene load_steps=23 format=3 uid="uid://8jsxl18pmfa3"]
+
+[ext_resource type="PackedScene" uid="uid://duivmv6t4uk2y" path="res://Characters/Movement/Movment_Node.tscn" id="1_4urht"]
+[ext_resource type="PackedScene" uid="uid://ca15vyuafc0p6" path="res://Characters/Class_Scripts/Warrior.tscn" id="2_mdh11"]
+[ext_resource type="Texture2D" uid="uid://cjqjc248drb13" path="res://GameAssets/Slime.png" id="3_a6hpf"]
+[ext_resource type="Texture2D" uid="uid://cyleeqqrbyyfs" path="res://GameAssets/Slash.png" id="4_e4w03"]
+[ext_resource type="PackedScene" uid="uid://duu0fboxtwwaf" path="res://Characters/Health/Health.tscn" id="5_bewr6"]
+[ext_resource type="Texture2D" uid="uid://nyqcai4256ul" path="res://GameAssets/Up_Slash.png" id="6_yqfb6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rctr2"]
+atlas = ExtResource("4_e4w03")
+region = Rect2(0, 0, 31, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cspi6"]
+atlas = ExtResource("4_e4w03")
+region = Rect2(31, 0, 31, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u17rk"]
+atlas = ExtResource("4_e4w03")
+region = Rect2(62, 0, 31, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmv1b"]
+atlas = ExtResource("4_e4w03")
+region = Rect2(0, 16, 31, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43px7"]
+atlas = ExtResource("4_e4w03")
+region = Rect2(31, 16, 31, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_my7xj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_a6hpf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rctr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cspi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u17rk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmv1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43px7")
+}],
+"loop": true,
+"name": &"slash",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eduxl"]
+size = Vector2(15, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbgnf"]
+size = Vector2(15, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpk25"]
+size = Vector2(15, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svdxx"]
+atlas = ExtResource("6_yqfb6")
+region = Rect2(0, 0, 31, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3o0e"]
+atlas = ExtResource("6_yqfb6")
+region = Rect2(31, 0, 31, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie3eu"]
+atlas = ExtResource("6_yqfb6")
+region = Rect2(62, 0, 31, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pdf7"]
+atlas = ExtResource("6_yqfb6")
+region = Rect2(0, 16, 31, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwd8b"]
+atlas = ExtResource("6_yqfb6")
+region = Rect2(31, 16, 31, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_31kyq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svdxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3o0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ie3eu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pdf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwd8b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cc4f"]
+size = Vector2(16, 15)
+
+[node name="slime_warior" type="CharacterBody2D"]
+
+[node name="Movment_Node" parent="." instance=ExtResource("1_4urht")]
+
+[node name="Warrior" parent="." instance=ExtResource("2_mdh11")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8, -8)
+sprite_frames = SubResource("SpriteFrames_my7xj")
+animation = &"slash"
+
+[node name="UI" parent="." instance=ExtResource("5_bewr6")]
+
+[node name="my_hurt_box" type="Area2D" parent="."]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="my_hurt_box"]
+position = Vector2(-15.5, -8)
+shape = SubResource("RectangleShape2D_eduxl")
+
+[node name="my_hit_box2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="my_hit_box2"]
+position = Vector2(-0.5, -5.5)
+shape = SubResource("RectangleShape2D_gbgnf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -5.5)
+shape = SubResource("RectangleShape2D_jpk25")
+
+[node name="vertical1" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="vertical1"]
+position = Vector2(0, -16)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_31kyq")
+
+[node name="my_hit_box" type="Area2D" parent="vertical1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vertical1/my_hit_box"]
+position = Vector2(0, -23.5)
+shape = SubResource("RectangleShape2D_5cc4f")
