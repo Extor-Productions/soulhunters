@@ -1,95 +1,71 @@
 extends CharacterBody2D
 
+enum States {
+	Chase,
+	Idle,
+	Return,
+	Launch
+}
+
+var current_state = States.Idle
+
 @export var spawn_point: Marker2D
 
-var player = null
+var player : CharacterBody2D = null
 var gravity : int = 900
-var speed : int = 100
-
-var chase = false
-var launch_back = false
-
-var stop = false
-var return_spawn = false
+var speed : int = 5000
 
 var damage := -1
 var health := 5
 
+func exit(new_state: States):
+	velocity = Vector2.ZERO
+	
+	current_state = new_state
+
 func _physics_process(delta):
-	if health <= 0:
-		queue_free()
-	
-	#Saker den ska göra:
-	#Chase player : klar
-	#Launch back : klar
-	#Stop : klar / Återgå till spawn
-	
-	if chase:
-		#Chase player
-		if player != null:
-			var dir = global_position.direction_to(player.global_position)
-			
-			velocity = dir * speed
-	elif launch_back:
-		if player != null:
-			var dir = -(global_position.direction_to(player.global_position))
-			
-			velocity = dir * (speed / 2)
-	elif return_spawn:
-		# Återgår till spawn
-		if spawn_point != null:
-			var dir = global_position.direction_to(spawn_point.global_position)
-			
-			if global_position.distance_to(spawn_point.global_position) <= 1:
-				return_spawn = false
-				return
-			
-			while global_position.distance_to(spawn_point.global_position) != 0:
-				velocity = dir * speed
-				
-				move_and_slide()
-				await get_tree().create_timer(1).timeout
-			
-	else:
-		velocity = Vector2.ZERO
+	match current_state:
+		States.Return:
+			Return(delta)
+		States.Idle:
+			idle(delta)
+		States.Launch:
+			launch(delta)
+		States.Chase:
+			chase(delta)
 	
 	move_and_slide()
 
+func launch(delta: float):
+	#Skicka tillbaka spöket när den har attackerat
+	var launch_direction = -(global_position.direction_to(player.global_position))
+	
+	velocity = (speed / 2) * launch_direction * delta
+
+func idle(delta: float):
+	#Åk ner i marken
+	velocity.y += gravity * delta
+
+func chase(delta: float):
+	#Jaga spelaren
+	var player_direction = global_position.direction_to(player.global_position)
+	
+	velocity = player_direction * speed * delta
+
+func Return(delta: float):
+	#Återgå till spawn pungt
+	if spawn_point == null:
+		exit(States.Idle)
+	else:
+		var spawn_direction = global_position.direction_to(spawn_point.global_position)
+		
+		velocity = spawn_direction * speed * delta
+		
+		if global_position.distance_to(spawn_point.global_position) <= 1 and global_position.distance_to(spawn_point.global_position) >= -1:
+			exit(States.Idle)
+
 func take_damage(amount):
 	health += amount
-	
-	$LaunchTimer.start()
-	if !launch_back:
-		chase = false
-		
-	launch_back = true
-
-#känner när spelaren går inom arean
-func _on_player_detect_body_shape_entered(body):
-	if body.is_in_group("Player"):
-		player = body
-		launch_back = false
-		chase = true
-
-#när spelaren lämnar arean
-func _on_player_detect_body_shape_exited(body):
-	if body.is_in_group("Player"):
-		#Ta bort spelaren från spöket
-		player = null
-		chase = false
-		launch_back = false
-		
-		return_spawn = true
-
-#Kollar när spöket har attackerat spelaren
-func _on_hurt_box_body_entered(body):
-	if body.is_in_group("Player"):
-		$LaunchTimer.start()
-		
-		if !launch_back:
-			chase = false
-		
-		launch_back = true
 
 func get_damage():
 	return damage
@@ -97,12 +73,27 @@ func get_damage():
 func should_knockback():
 	return false
 
-func _on_launch_timer_timeout():
-	launch_back = false
-	
-	if player != null:
-		chase = true
-
 func _on_hit_box_area_entered(area: Area2D):
 	if area.is_in_group("Player"):
 		take_damage(area.get_parent().get_damage())
+
+func _on_player_detect_body_entered(body):
+	exit(States.Chase)
+	
+	player = body
+
+func _on_player_detect_body_exited(_body):
+	player = null
+	
+	if spawn_point != null:
+		exit(States.Return)
+	else:
+		exit(States.Idle)
+
+func _on_hurt_box_body_entered(body):
+	$LaunchTimer.start()
+	exit(States.Launch)
+
+func _on_launch_timer_timeout():
+	if current_state == States.Launch:
+		exit(States.Chase)

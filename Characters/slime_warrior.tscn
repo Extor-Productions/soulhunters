@@ -268,11 +268,15 @@ collision_mask = 7
 script = ExtResource("1_t3tc8")
 
 [node name="Movment_Node" parent="." instance=ExtResource("2_slkjq")]
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 dash_force = 25000
 =======
 move_speed = 7500
 >>>>>>> Stashed changes
+=======
+move_speed = 5500
+>>>>>>> b812d4d96a51c50f5dd1ba4e3c030e169309f677
 
 [node name="Warrior" parent="." instance=ExtResource("3_sklep")]
 
