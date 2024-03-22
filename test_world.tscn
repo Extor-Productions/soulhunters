@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://b26wadiui71n"]
+
+[ext_resource type="Texture2D" uid="uid://b7c6dpn6osgra" path="res://GameAssets/TileSet.png" id="1_dfesr"]
+[ext_resource type="PackedScene" uid="uid://bx6fve0qwbiaj" path="res://Characters/Enemies/Snail_character.tscn" id="2_ehaf2"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j0pjk"]
+texture = ExtResource("1_dfesr")
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:1/0 = 0
+7:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:1/0/physics_layer_0/angular_velocity = 0.0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:3/0 = 0
+5:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:3/0/physics_layer_0/angular_velocity = 0.0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:3/0 = 0
+7:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:3/0/physics_layer_0/angular_velocity = 0.0
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:5/0 = 0
+1:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:5/0/physics_layer_0/angular_velocity = 0.0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:5/0 = 0
+3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:5/0/physics_layer_0/angular_velocity = 0.0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:5/0 = 0
+5:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:5/0/physics_layer_0/angular_velocity = 0.0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:5/0 = 0
+7:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:5/0/physics_layer_0/angular_velocity = 0.0
+7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_pkrdy"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_j0pjk")
+
+[node name="Test_World" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_pkrdy")
+format = 2
+layer_0/tile_data = PackedInt32Array(196612, 327680, 5, 262148, 327680, 5, 327684, 327680, 5, 327685, 327680, 5, 327686, 327680, 5, 327687, 327680, 5, 327688, 327680, 5, 327689, 327680, 5, 327690, 327680, 5, 327691, 327680, 5, 262155, 327680, 5, 196619, 327680, 5, 196618, 327680, 5, 196617, 327680, 5, 196616, 327680, 5, 196615, 327680, 5, 196614, 327680, 5, 196613, 327680, 5, 262149, 327680, 5, 262150, 327680, 5, 262151, 327680, 5, 262152, 327680, 5, 262153, 327680, 5, 262154, 327680, 5, 393220, 196608, 1, 393221, 196608, 1, 393222, 196608, 1, 393223, 196608, 1, 393224, 196608, 1, 393225, 196608, 1, 393226, 196608, 1, 393227, 196608, 1, 393228, 327680, 1, 131075, 65536, 3, 196620, 65536, 5, 262156, 65536, 5, 327692, 65536, 5, 131084, 458752, 5, 131083, 196608, 3, 131082, 196608, 3, 131081, 196608, 3, 131080, 196608, 3, 131079, 196608, 3, 131078, 196608, 3, 131077, 196608, 3, 131076, 196608, 3, 196611, 196608, 5, 262147, 196608, 5, 327683, 196608, 5, 393219, 458752, 3)
+
+[node name="Snail" parent="." instance=ExtResource("2_ehaf2")]
+position = Vector2(198, 27)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(157, 70)
+zoom = Vector2(3, 3)

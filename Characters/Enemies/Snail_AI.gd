@@ -8,12 +8,9 @@ enum States {
 }
 
 var current_state = States.Left
+var direction = "Left"
 
-var move_speed = 15000
-
-@onready var down_1 = $"Vision/Down 1"
-@onready var down_2 = $"Vision/Down 2"
-@onready var front = $Vision/Front
+var move_speed = 1750
 
 func exit(new_state: States):
 	new_state = current_state
