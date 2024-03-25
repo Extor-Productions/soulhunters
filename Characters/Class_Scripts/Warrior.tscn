@@ -6,6 +6,7 @@
 script = ExtResource("1_ukcen")
 
 [node name="Attack1_Cooldown" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [connection signal="timeout" from="Attack1_Cooldown" to="." method="_on_attack_1_cooldown_timeout"]
