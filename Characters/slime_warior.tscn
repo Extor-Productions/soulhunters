@@ -1,11 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://8jsxl18pmfa3"]
+[gd_scene load_steps=27 format=3 uid="uid://8jsxl18pmfa3"]
 
 [ext_resource type="PackedScene" uid="uid://duivmv6t4uk2y" path="res://Characters/Movement/Movment_Node.tscn" id="1_4urht"]
+[ext_resource type="Script" path="res://Characters/Character_Controller.gd" id="1_g0nmj"]
 [ext_resource type="PackedScene" uid="uid://ca15vyuafc0p6" path="res://Characters/Class_Scripts/Warrior.tscn" id="2_mdh11"]
 [ext_resource type="Texture2D" uid="uid://cjqjc248drb13" path="res://GameAssets/Slime.png" id="3_a6hpf"]
 [ext_resource type="Texture2D" uid="uid://cyleeqqrbyyfs" path="res://GameAssets/Slash.png" id="4_e4w03"]
 [ext_resource type="PackedScene" uid="uid://duu0fboxtwwaf" path="res://Characters/Health/Health.tscn" id="5_bewr6"]
 [ext_resource type="Texture2D" uid="uid://nyqcai4256ul" path="res://GameAssets/Up_Slash.png" id="6_yqfb6"]
+
+[sub_resource type="Animation" id="Animation_4vo1m"]
+resource_name = "defult"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rctr2"]
 atlas = ExtResource("4_e4w03")
@@ -57,6 +61,27 @@ animations = [{
 "name": &"slash",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_x1iqt"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:sprite_frames")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("SpriteFrames_my7xj")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k6ldx"]
+_data = {
+"RESET": SubResource("Animation_x1iqt"),
+"defult": SubResource("Animation_4vo1m")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eduxl"]
 size = Vector2(15, 16)
@@ -114,6 +139,14 @@ animations = [{
 size = Vector2(16, 15)
 
 [node name="slime_warior" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_g0nmj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k6ldx")
+}
 
 [node name="Movment_Node" parent="." instance=ExtResource("1_4urht")]
 
@@ -122,9 +155,8 @@ size = Vector2(16, 15)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-8, -8)
 sprite_frames = SubResource("SpriteFrames_my7xj")
-animation = &"slash"
 
-[node name="UI" parent="." instance=ExtResource("5_bewr6")]
+[node name="Health" parent="." instance=ExtResource("5_bewr6")]
 
 [node name="my_hurt_box" type="Area2D" parent="."]
 
@@ -132,9 +164,9 @@ animation = &"slash"
 position = Vector2(-15.5, -8)
 shape = SubResource("RectangleShape2D_eduxl")
 
-[node name="my_hit_box2" type="Area2D" parent="."]
+[node name="HitBox2" type="Area2D" parent="."]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="my_hit_box2"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox2"]
 position = Vector2(-0.5, -5.5)
 shape = SubResource("RectangleShape2D_gbgnf")
 
@@ -142,15 +174,18 @@ shape = SubResource("RectangleShape2D_gbgnf")
 position = Vector2(-0.5, -5.5)
 shape = SubResource("RectangleShape2D_jpk25")
 
-[node name="vertical1" type="Node2D" parent="."]
+[node name="Verticall" type="Node2D" parent="."]
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="vertical1"]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Verticall"]
 position = Vector2(0, -16)
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_31kyq")
 
-[node name="my_hit_box" type="Area2D" parent="vertical1"]
+[node name="HitBox" type="Area2D" parent="Verticall"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="vertical1/my_hit_box"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Verticall/HitBox"]
 position = Vector2(0, -23.5)
 shape = SubResource("RectangleShape2D_5cc4f")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
