@@ -51,3 +51,4 @@ func get_damage():
 
 func get_damage_direction():
 	return movement_controller.damage_dir()
+

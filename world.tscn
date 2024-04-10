@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyqeqbsgx2umt"]
+[gd_scene load_steps=7 format=3 uid="uid://dyqeqbsgx2umt"]
 
 [ext_resource type="Texture2D" uid="uid://b7c6dpn6osgra" path="res://GameAssets/TileSet.png" id="1_r8jlc"]
 [ext_resource type="PackedScene" uid="uid://8jsxl18pmfa3" path="res://Characters/slime_warior.tscn" id="2_w6t5m"]
+[ext_resource type="Script" path="res://Boss/BossEnter.gd" id="3_n3xum"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y3kg3"]
 texture = ExtResource("1_r8jlc")
@@ -73,7 +74,11 @@ layer_0/tile_data = PackedInt32Array(393214, 196608, 3, 393215, 196608, 3, 32768
 position = Vector2(34, 66)
 
 [node name="BossEnter" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("3_n3xum")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossEnter"]
 position = Vector2(302, -31.5)
 shape = SubResource("RectangleShape2D_komqj")
+
+[connection signal="body_entered" from="BossEnter" to="BossEnter" method="_on_body_entered"]

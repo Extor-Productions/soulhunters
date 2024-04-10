@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk8ce3qk3lx76"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rbjq4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3eq5p"]
+
+[node name="SoulCharge" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rbjq4")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3eq5p")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 10
+one_shot = true
+emission_shape = 1
+emission_sphere_radius = 25.0
+gravity = Vector2(2.08165e-12, -150)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color = Color(0.588235, 0.415686, 0.972549, 1)
