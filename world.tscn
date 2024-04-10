@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyqeqbsgx2umt"]
+[gd_scene load_steps=7 format=3 uid="uid://ijfbak2eaa5w"]
 
 [ext_resource type="Texture2D" uid="uid://b7c6dpn6osgra" path="res://GameAssets/TileSet.png" id="1_r8jlc"]
-[ext_resource type="PackedScene" uid="uid://8jsxl18pmfa3" path="res://Characters/slime_warior.tscn" id="2_w6t5m"]
+[ext_resource type="PackedScene" path="res://Characters/slime_warior.tscn" id="2_w6t5m"]
 [ext_resource type="Script" path="res://Boss/BossEnter.gd" id="3_n3xum"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y3kg3"]
