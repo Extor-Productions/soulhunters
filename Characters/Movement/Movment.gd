@@ -11,8 +11,8 @@ var knockback_direction: int = -1
 var dashing = false
 var movment = true
 
-@export var dash_force: int = 1000
-
+@export var dash_force: int = 133333
+var can_dash = true
 
 @export var gravity: float = 900
 
@@ -44,18 +44,17 @@ func move(delta: float):
 		parent.move_and_slide()
 
 func dash(delta):
-	if Input.is_action_just_pressed("dash") and !dashing:
+	if Input.is_action_just_pressed("dash") and !dashing and can_dash:
 		dash_timer.start()
 		dash_timer2.start()
 		dashing = true
 		movment = false
+		can_dash = false
+		
 		while dashing:
 			
-			parent.velocity.x += dash_force * delta
+			parent.velocity.x += dash_force * delta * -knockback_direction
 			await get_tree().create_timer(.1).timeout
-	
-	if Input.is_action_just_pressed("dash"):
-		parent.velocity.x += 1000000 * -knockback_direction
 	
 	parent.move_and_slide()
 
@@ -90,8 +89,9 @@ func damage_dir():
 
 func _on_dash_timer_timeout():
 	dashing = false
-
+	parent.velocity.x = 0
+	movment = true
 
 
 func _on_dash_timer_2_timeout():
-	movment = true
+	can_dash = true
