@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bplk1dpwynhyd"]
+
+[ext_resource type="Script" path="res://Characters/UI/UI.gd" id="1_6vm0a"]
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_6vm0a")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
