@@ -1,16 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk8ce3qk3lx76"]
+[gd_scene load_steps=4 format=3 uid="uid://bk8ce3qk3lx76"]
+
+[ext_resource type="Script" path="res://Characters/Dropables/soul_charge/soul_charge.gd" id="1_uj2a1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rbjq4"]
+radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3eq5p"]
 
 [node name="SoulCharge" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_uj2a1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_rbjq4")
-disabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_3eq5p")
@@ -25,3 +31,5 @@ gravity = Vector2(2.08165e-12, -150)
 scale_amount_min = 2.0
 scale_amount_max = 2.0
 color = Color(0.588235, 0.415686, 0.972549, 1)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ijfbak2eaa5w"]
+[gd_scene load_steps=8 format=3 uid="uid://ijfbak2eaa5w"]
 
 [ext_resource type="Texture2D" uid="uid://b7c6dpn6osgra" path="res://GameAssets/TileSet.png" id="1_r8jlc"]
 [ext_resource type="PackedScene" uid="uid://gbtd5wsviieh" path="res://Characters/slime_warior.tscn" id="2_w6t5m"]
 [ext_resource type="Script" path="res://Boss/BossEnter.gd" id="3_n3xum"]
+[ext_resource type="PackedScene" uid="uid://bk8ce3qk3lx76" path="res://Characters/Dropables/soul_charge/soul_charge.tscn" id="4_f70aj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y3kg3"]
 texture = ExtResource("1_r8jlc")
@@ -82,5 +83,8 @@ script = ExtResource("3_n3xum")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossEnter"]
 position = Vector2(302, -31.5)
 shape = SubResource("RectangleShape2D_komqj")
+
+[node name="SoulCharge" parent="." instance=ExtResource("4_f70aj")]
+position = Vector2(366, 66)
 
 [connection signal="body_entered" from="BossEnter" to="BossEnter" method="_on_body_entered"]
