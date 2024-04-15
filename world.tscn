@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ijfbak2eaa5w"]
 
 [ext_resource type="Texture2D" uid="uid://b7c6dpn6osgra" path="res://GameAssets/TileSet.png" id="1_r8jlc"]
-[ext_resource type="PackedScene" path="res://Characters/slime_warior.tscn" id="2_w6t5m"]
+[ext_resource type="PackedScene" uid="uid://gbtd5wsviieh" path="res://Characters/slime_warior.tscn" id="2_w6t5m"]
 [ext_resource type="Script" path="res://Boss/BossEnter.gd" id="3_n3xum"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y3kg3"]
@@ -64,6 +64,8 @@ sources/0 = SubResource("TileSetAtlasSource_y3kg3")
 size = Vector2(20, 33)
 
 [node name="World" type="Node2D"]
+metadata/_edit_vertical_guides_ = [145.0, 384.0, 321.0, 264.0, 74.0, 205.0]
+metadata/_edit_horizontal_guides_ = [46.0, 75.0, 141.0, 242.0, 300.0, -26.0]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_go5cq")
