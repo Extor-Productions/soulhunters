@@ -272,13 +272,17 @@ offset_right = 73.0
 offset_bottom = 7.0
 
 [node name="my_hurt_box" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="my_hurt_box"]
-position = Vector2(15, -8)
+position = Vector2(16, -8)
 shape = SubResource("RectangleShape2D_eduxl")
 disabled = true
 
 [node name="HitBox2" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox2"]
 position = Vector2(-0.5, -5.5)
@@ -297,6 +301,8 @@ sprite_frames = SubResource("SpriteFrames_31kyq")
 animation = &"nothing"
 
 [node name="HitBox" type="Area2D" parent="Verticall"]
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Verticall/HitBox"]
 position = Vector2(0, -23.5)
@@ -307,3 +313,5 @@ disabled = true
 zoom = Vector2(3, 3)
 
 [node name="PlayerUI" parent="." instance=ExtResource("8_jl224")]
+
+[connection signal="area_entered" from="HitBox2" to="." method="_on_my_hurt_box_area_entered"]

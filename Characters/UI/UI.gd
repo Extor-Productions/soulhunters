@@ -3,6 +3,9 @@ extends Control
 @onready var coin_text = $CoinText
 var coin = 0
 
+func _ready():
+	GlobalSignals.connect("change_coin", change_coin)
+
 func change_coin(amount):
 	coin += amount
 	

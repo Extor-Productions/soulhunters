@@ -7,6 +7,8 @@ enum States {
 	Launch
 }
 
+@onready var coin = preload("res://Characters/Dropables/soul_charge/soul_charge.tscn").instantiate()
+
 var current_state = States.Idle
 
 @export var spawn_point: Marker2D
@@ -66,6 +68,9 @@ func Return(delta: float):
 
 func take_damage(amount):
 	health += amount
+	
+	if health <= 0:
+		queue_free()
 
 func get_damage():
 	return damage

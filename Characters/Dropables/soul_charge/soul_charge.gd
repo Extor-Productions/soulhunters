@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
-@onready var gravity = 5
+@onready var gravity = 900
 
+func _ready():
+	$CPUParticles2D.emitting = true
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -12,4 +14,5 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body):
 	Game.souls += 1
+	GlobalSignals.emit_signal("change_coin", Game.souls)
 	queue_free()
