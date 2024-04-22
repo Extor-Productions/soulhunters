@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c41rbon1lqbq5"]
+
+[ext_resource type="Texture2D" uid="uid://ba7hh72nm1t0m" path="res://GameAssets/Skull_Bite.png" id="1_gxqkk"]
+[ext_resource type="Script" path="res://Boss/Skeleton_Boss/skeleton_AI.gd" id="1_stn3m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2jljh"]
+radius = 64.0
+
+[node name="SkeletonBoss" type="CharacterBody2D"]
+script = ExtResource("1_stn3m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2jljh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(9.703, 10)
+texture = ExtResource("1_gxqkk")
+region_enabled = true
+region_rect = Rect2(0, 0, 14, 14)
