@@ -37,6 +37,9 @@ func take_damage(damage_amount: int, should_knockback: bool):
 	
 	health += damage_amount
 	health_bar.change_health(damage_amount)
+	
+	#if health <= 0:
+	#	queue_free()
 
 func _on_knockback_timer_timeout():
 	#Stäng av knockback

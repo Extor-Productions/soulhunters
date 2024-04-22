@@ -7,6 +7,6 @@ func _ready():
 	GlobalSignals.connect("change_coin", change_coin)
 
 func change_coin(amount):
-	coin += amount
+	coin = amount
 	
 	coin_text.text = "Coin: " + str(coin)

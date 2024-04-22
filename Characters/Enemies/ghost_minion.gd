@@ -70,6 +70,8 @@ func take_damage(amount):
 	health += amount
 	
 	if health <= 0:
+		spawn_coin()
+		
 		queue_free()
 
 func get_damage():
@@ -81,6 +83,9 @@ func should_knockback():
 func _on_hit_box_area_entered(area: Area2D):
 	if area.is_in_group("Player"):
 		take_damage(area.get_parent().get_damage())
+	
+	if area.is_in_group("Player_2"):
+		take_damage(area.get_parent().get_parent().get_damage())
 
 func _on_player_detect_body_entered(body):
 	exit(States.Chase)
@@ -102,3 +107,8 @@ func _on_hurt_box_body_entered(body):
 func _on_launch_timer_timeout():
 	if current_state == States.Launch:
 		exit(States.Chase)
+
+func spawn_coin():
+	coin.global_position = global_position
+	
+	get_parent().call_deferred("add_child", coin)
