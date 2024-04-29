@@ -19,12 +19,23 @@ var can_turn = true
 
 @export var idle_move_speed = 9500
 
+#Return Variables
+@onready var return_point = $Return/ReturnPoint
+
+var damage = -1
 
 func change_state(new_state: States):
+	direction = Vector2.ZERO
+	velocity = direction
+	
+	return_point.global_position = global_position
+	
 	current_state = new_state
 	
 	if new_state == States.Idle:
 		direction = Vector2(1, 0)
+	if new_state == States.Return:
+		pass
 
 func _ready():
 	change_state(States.Idle)
@@ -34,7 +45,7 @@ func _physics_process(delta):
 		States.Idle:
 			Idle(delta)
 		States.Return:
-			pass
+			Return()
 		States.GroundSlam:
 			pass
 
@@ -64,3 +75,6 @@ func Idle(delta):
 
 func _on_turn_timer_timeout():
 	can_turn = true
+
+func get_damage():
+	return damage
