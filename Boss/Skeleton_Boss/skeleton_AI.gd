@@ -73,6 +73,9 @@ func Idle(delta):
 	velocity.x = direction.x * idle_move_speed * delta
 	move_and_slide()
 
+func ground_slam(delta):
+	pass
+
 func _on_turn_timer_timeout():
 	can_turn = true
 
