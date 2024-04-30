@@ -50,4 +50,9 @@ position = Vector2(0, 63.75)
 shape = SubResource("RectangleShape2D_hfnkm")
 disabled = true
 
+[node name="WaitTimer" type="Timer" parent="GroundSlam"]
+wait_time = 4.0
+one_shot = true
+
 [connection signal="timeout" from="Idle/TurnTimer" to="." method="_on_turn_timer_timeout"]
+[connection signal="timeout" from="GroundSlam/WaitTimer" to="." method="_on_wait_timer_timeout"]
