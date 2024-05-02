@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://gbtd5wsviieh"]
+[gd_scene load_steps=32 format=3 uid="uid://gbtd5wsviieh"]
 
 [ext_resource type="PackedScene" uid="uid://duivmv6t4uk2y" path="res://Characters/Movement/Movment_Node.tscn" id="1_4urht"]
 [ext_resource type="Script" path="res://Characters/Character_Controller.gd" id="1_g0nmj"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://duu0fboxtwwaf" path="res://Characters/Health/Health.tscn" id="5_bewr6"]
 [ext_resource type="Texture2D" uid="uid://nyqcai4256ul" path="res://GameAssets/Up_Slash.png" id="6_yqfb6"]
 [ext_resource type="PackedScene" uid="uid://bplk1dpwynhyd" path="res://Characters/UI/player_ui.tscn" id="8_jl224"]
+[ext_resource type="Script" path="res://Characters/Health/GetDamage.gd" id="8_u05na"]
 
 [sub_resource type="Animation" id="Animation_x1iqt"]
 resource_name = "RESET"
@@ -274,6 +275,7 @@ offset_bottom = 7.0
 [node name="my_hurt_box" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 0
+script = ExtResource("8_u05na")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="my_hurt_box"]
 position = Vector2(16, -8)
@@ -301,6 +303,7 @@ animation = &"nothing"
 [node name="HitBox" type="Area2D" parent="Verticall"]
 collision_layer = 8
 collision_mask = 0
+script = ExtResource("8_u05na")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Verticall/HitBox"]
 position = Vector2(0, -23.5)

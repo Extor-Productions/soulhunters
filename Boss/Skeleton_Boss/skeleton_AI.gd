@@ -11,6 +11,7 @@ var direction = Vector2.ZERO
 var gravity = 9.81
 
 var damage = -1
+var health = 20
 
 @export var move_speed = 9500
 
@@ -23,7 +24,7 @@ var damage = -1
 var can_turn = true
 
 #Return Variables
-@onready var return_point = $Return/ReturnPoint
+@onready var return_point = $Return/ReturnPoint.global_position
 
 #Ground Slam varaiables
 @onready var ground_collision = $GroundSlam/Area2D/CollisionShape2D
@@ -36,7 +37,7 @@ func change_state(new_state: States):
 	ground_collision.disabled = true
 	
 	if current_state == States.Idle:
-		return_point.global_position = global_position
+		return_point = global_position
 	
 	current_state = new_state
 	
@@ -65,8 +66,10 @@ func choose_attack_state():
 	var new_attack = randi_range(min, max)
 
 func Return(delta):
-	velocity = direction * move_speed * delta
+	if global_position.distance_to(return_point) <= 1 and global_position.distance_to(return_point) >= -1:
+			change_state(States.Idle)
 	
+	velocity = direction * move_speed * delta
 	move_and_slide()
 
 func Idle(delta):
@@ -99,3 +102,15 @@ func get_damage():
 
 func _on_wait_timer_timeout():
 	change_state(States.Return)
+
+func _on_hurt_box_area_entered(area: Area2D):
+	take_damage(area.get_damage())
+
+func take_damage(damage_amount: int):
+	#det är plus för att damage_amount är ett negativt tal
+	health += damage_amount
+	print(health)
+	
+	if health <= 0:
+		#Boss fight är klart
+		queue_free()
