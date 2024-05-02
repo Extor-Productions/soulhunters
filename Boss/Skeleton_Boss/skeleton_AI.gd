@@ -54,6 +54,9 @@ func _physics_process(delta):
 		States.GroundSlam:
 			ground_slam(delta)
 
+func _ready():
+	change_state(States.Idle)
+
 func choose_attack_state():
 	randomize()
 	var max = States.values().max()
