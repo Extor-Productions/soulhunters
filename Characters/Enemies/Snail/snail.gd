@@ -42,7 +42,7 @@ func _on_indestrukteble_timer_timeout():
 
 func _on_enemy_hit_box_area_entered(area: Area2D):
 	if area.is_in_group("Player"):
-		take_damage(area.get_parent().get_damage(), area.get_parent().get_damage_direction())
+		take_damage(area.get_damage(), area.get_damage_direction())
 
 func get_damage():
 	return damage

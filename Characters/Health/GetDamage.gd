@@ -4,3 +4,6 @@ extends Area2D
 
 func get_damage():
 	return damage
+
+func get_damage_direction():
+	return -1
