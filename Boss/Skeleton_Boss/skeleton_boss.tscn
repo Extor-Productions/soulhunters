@@ -39,7 +39,7 @@ shape = SubResource("CircleShape2D_2jljh")
 [node name="Area2D" type="Area2D" parent="GroundSlam"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundSlam/Area2D"]
-position = Vector2(0, 48)
+position = Vector2(0, 40)
 shape = SubResource("RectangleShape2D_hfnkm")
 disabled = true
 

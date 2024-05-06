@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4lyu43iyqnu0"]
+[gd_scene load_steps=11 format=3 uid="uid://c4lyu43iyqnu0"]
 
 [ext_resource type="Texture2D" uid="uid://bigyhlra5fb7q" path="res://GameAssets/new_tileset.png" id="1_k1k2j"]
 [ext_resource type="PackedScene" uid="uid://c41rbon1lqbq5" path="res://Boss/Skeleton_Boss/skeleton_boss.tscn" id="2_5cpj7"]
@@ -80,6 +80,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(-104, 128)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonBoss:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_cxicu"]
 resource_name = "Start"
@@ -145,8 +157,73 @@ tracks/4/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_47pvi"]
+resource_name = "Death"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonBoss:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 104), Vector2(0, 20), Vector2(0, -150)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("slime_warior:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-104, 128)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("slime_warior:can_move")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Fences/FenceLeft/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Fences/FenceRight/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hrjg0"]
 _data = {
+"Death": SubResource("Animation_47pvi"),
 "RESET": SubResource("Animation_umpmg"),
 "Start": SubResource("Animation_cxicu")
 }
@@ -165,6 +242,7 @@ layer_0/tile_data = PackedInt32Array(589814, 196608, 3, 589815, 196608, 3, 58981
 
 [node name="slime_warior" parent="." instance=ExtResource("3_idbn8")]
 position = Vector2(-104, 128)
+can_move = false
 
 [node name="Fences" type="Node2D" parent="."]
 

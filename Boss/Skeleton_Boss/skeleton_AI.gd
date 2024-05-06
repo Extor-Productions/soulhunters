@@ -19,6 +19,9 @@ var health = 20
 @export var anim_player: AnimationPlayer
 @onready var attack_timer: Timer = $AttackTimer
 
+@onready var coin_scene: PackedScene = preload("res://Characters/Dropables/soul_charge/soul_charge.tscn")
+var coin_amount = 25
+
 #Go Around variables
 @onready var around_timer = $GoAround/AroundTimer
 var current_dir = ""
@@ -67,6 +70,8 @@ func _physics_process(delta):
 			ground_slam(delta)
 		States.GoAround:
 			go_around(delta)
+		_:
+			pass
 
 func choose_attack_state():
 	randomize()
@@ -74,10 +79,6 @@ func choose_attack_state():
 	var min = States.values().min() + 2 #plus två för att ta bort idle, return
 	
 	var new_attack = randi_range(min, max)
-
-func _unhandled_input(event):
-	if event.is_action_pressed("BasicAttack"):
-		change_state(States.GoAround)
 
 func Return(delta):
 	if global_position.distance_to(return_point) <= 1 and global_position.distance_to(return_point) >= -1:
@@ -95,7 +96,6 @@ func Idle(delta):
 
 func ground_slam(delta):
 	if is_on_floor():
-		#ändra state och slå på collision
 		ground_collision.disabled = false
 		if wait_timer.is_stopped():
 			wait_timer.start()
@@ -157,8 +157,7 @@ func take_damage(damage_amount: int):
 	print(health)
 	
 	if health <= 0:
-		#Boss fight är klart
-		queue_free()
+		death()
 
 func _on_attack_timer_timeout():
 	pass # Replace with function body.
@@ -170,3 +169,24 @@ func _on_around_timer_timeout():
 
 func _on_wait_timer_timeout():
 	change_state(States.Return)
+
+func death():
+	current_state = -1
+	velocity = Vector2.ZERO
+	direction = Vector2.ZERO
+	
+	anim_player.play("Death")
+	
+	#Spawn coins
+	await get_tree().create_timer(1.5).timeout
+	for coin in coin_amount:
+		var new_coin = coin_scene.instantiate()
+		#Randomize spawn location
+		
+		get_parent().call_deferred("add_child", new_coin)
+		await get_tree().create_timer(randf_range(0.05, 0.1)).timeout
+
+	#Ta bort från scenen
+	await anim_player.animation_finished
+	print("test")
+	queue_free()
