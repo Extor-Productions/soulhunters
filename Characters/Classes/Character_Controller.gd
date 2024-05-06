@@ -8,16 +8,19 @@ extends CharacterBody2D
 @export var health = 10
 @export var damage = -1
 
+@export var can_move = true
+
 var knockback = false
 
 func _ready():
 	$AnimationPlayer.play("RESET")
 
 func _physics_process(delta):
-	move(delta)
-	movement_controller.dash(delta)
-	
-	warrior_node.slash()
+	if can_move:
+		move(delta)
+		movement_controller.dash(delta)
+		
+		warrior_node.slash()
 
 func move(delta: float):
 	#Ska alltid vara först
