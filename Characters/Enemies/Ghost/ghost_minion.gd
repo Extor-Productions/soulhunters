@@ -81,11 +81,7 @@ func should_knockback():
 	return false
 
 func _on_hit_box_area_entered(area: Area2D):
-	if area.is_in_group("Player"):
-		take_damage(area.get_parent().get_damage())
-	
-	if area.is_in_group("Player_2"):
-		take_damage(area.get_parent().get_parent().get_damage())
+	take_damage(area.get_damage())
 
 func _on_player_detect_body_entered(body):
 	exit(States.Chase)
