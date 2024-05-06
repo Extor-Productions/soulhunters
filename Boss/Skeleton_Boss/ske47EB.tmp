@@ -156,6 +156,8 @@ metadata/_edit_horizontal_guides_ = [305.0]
 metadata/_edit_vertical_guides_ = [-415.0, 336.0]
 
 [node name="SkeletonBoss" parent="." node_paths=PackedStringArray("anim_player") instance=ExtResource("2_5cpj7")]
+current_state = null
+move_speed = null
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="TileMap" type="TileMap" parent="."]
