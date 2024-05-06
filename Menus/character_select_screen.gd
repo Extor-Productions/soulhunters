@@ -36,4 +36,4 @@ func _on_selection_arrow_right_pressed():
 
 #startar
 func _on_ready_pressed():
-	get_tree().change_scene_to_file("res://world.tscn")
+	get_tree().change_scene_to_file("res://Worlds/world.tscn")
