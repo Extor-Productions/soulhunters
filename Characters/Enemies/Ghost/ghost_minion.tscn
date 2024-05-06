@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dvgyxitgmm12"]
 
-[ext_resource type="Texture2D" uid="uid://bfkexrthv8j6y" path="res://GameAssets/GhostMinion.png" id="1_r5k4e"]
-[ext_resource type="Script" path="res://Characters/Enemies/ghost_minion.gd" id="1_w5bqd"]
+[ext_resource type="Script" path="res://Characters/Enemies/Ghost/ghost_minion.gd" id="1_qtr1f"]
+[ext_resource type="Texture2D" uid="uid://bfkexrthv8j6y" path="res://GameAssets/GhostMinion.png" id="2_o8p23"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aw4ah"]
 size = Vector2(6, 14)
@@ -10,7 +10,7 @@ size = Vector2(6, 14)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_r5k4e")
+"texture": ExtResource("2_o8p23")
 }],
 "loop": true,
 "name": &"Idle",
@@ -31,7 +31,7 @@ height = 14.0
 [node name="ghost_minion" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("1_w5bqd")
+script = ExtResource("1_qtr1f")
 
 [node name="floor_distance2" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)

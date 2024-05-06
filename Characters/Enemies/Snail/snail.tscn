@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://5e1lv8cli7ru"]
 
-[ext_resource type="Script" path="res://Characters/snail.gd" id="1_71gg0"]
+[ext_resource type="Script" path="res://Characters/Enemies/Snail/snail.gd" id="1_71gg0"]
 [ext_resource type="Texture2D" uid="uid://co71yqh57of3s" path="res://GameAssets/Snail.png" id="1_dp76j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_och6v"]

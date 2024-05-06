@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://ijfbak2eaa5w"]
 
 [ext_resource type="Texture2D" uid="uid://b7c6dpn6osgra" path="res://GameAssets/TileSet.png" id="1_r8jlc"]
-[ext_resource type="PackedScene" uid="uid://gbtd5wsviieh" path="res://Characters/slime_warior.tscn" id="2_w6t5m"]
+[ext_resource type="PackedScene" uid="uid://gbtd5wsviieh" path="res://Characters/Classes/Slime Woriar/slime_warior.tscn" id="2_w6t5m"]
 [ext_resource type="PackedScene" uid="uid://bvj8dc88l5vvk" path="res://Boss/boss_enter.tscn" id="3_y7sei"]
 [ext_resource type="PackedScene" uid="uid://c4lyu43iyqnu0" path="res://Boss/Skeleton_Boss/skeleton_arena.tscn" id="4_brn4j"]
 [ext_resource type="PackedScene" uid="uid://bk8ce3qk3lx76" path="res://Characters/Dropables/soul_charge/soul_charge.tscn" id="4_f70aj"]
-[ext_resource type="PackedScene" uid="uid://dvgyxitgmm12" path="res://Characters/Enemies/ghost_minion.tscn" id="5_oysek"]
+[ext_resource type="PackedScene" uid="uid://dvgyxitgmm12" path="res://Characters/Enemies/Ghost/ghost_minion.tscn" id="5_oysek"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y3kg3"]
 texture = ExtResource("1_r8jlc")
