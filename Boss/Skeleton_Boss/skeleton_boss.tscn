@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c41rbon1lqbq5"]
+[gd_scene load_steps=8 format=3 uid="uid://c41rbon1lqbq5"]
 
 [ext_resource type="Texture2D" uid="uid://ba7hh72nm1t0m" path="res://GameAssets/Skull_Bite.png" id="1_gxqkk"]
 [ext_resource type="Script" path="res://Boss/Skeleton_Boss/skeleton_AI.gd" id="1_stn3m"]
+[ext_resource type="Script" path="res://Characters/Health/GetDamage.gd" id="3_qsbpn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2jljh"]
 radius = 48.0
@@ -37,6 +38,7 @@ shape = SubResource("CircleShape2D_2jljh")
 [node name="GroundSlam" type="Node2D" parent="."]
 
 [node name="Area2D" type="Area2D" parent="GroundSlam"]
+script = ExtResource("3_qsbpn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundSlam/Area2D"]
 position = Vector2(0, 40)
@@ -44,6 +46,7 @@ shape = SubResource("RectangleShape2D_hfnkm")
 disabled = true
 
 [node name="WaitTimer" type="Timer" parent="GroundSlam"]
+wait_time = 2.0
 one_shot = true
 
 [node name="GoAround" type="Node2D" parent="."]
@@ -60,6 +63,7 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_xog1a")
 
 [node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("3_qsbpn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_0u3ty")

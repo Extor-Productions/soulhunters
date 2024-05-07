@@ -7,3 +7,6 @@ func get_damage():
 
 func get_damage_direction():
 	return -1
+
+func should_knockback():
+	return false

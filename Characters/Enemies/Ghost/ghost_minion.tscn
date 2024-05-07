@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvgyxitgmm12"]
+[gd_scene load_steps=9 format=3 uid="uid://dvgyxitgmm12"]
 
 [ext_resource type="Script" path="res://Characters/Enemies/Ghost/ghost_minion.gd" id="1_qtr1f"]
 [ext_resource type="Texture2D" uid="uid://bfkexrthv8j6y" path="res://GameAssets/GhostMinion.png" id="2_o8p23"]
+[ext_resource type="Script" path="res://Characters/Health/GetDamage.gd" id="3_1vfmf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aw4ah"]
 size = Vector2(6, 14)
@@ -49,6 +50,7 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_vnrww")
 
 [node name="HurtBox" type="Area2D" parent="." groups=["Enemy"]]
+script = ExtResource("3_1vfmf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CapsuleShape2D_7nrth")

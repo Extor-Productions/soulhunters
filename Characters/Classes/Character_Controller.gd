@@ -49,7 +49,7 @@ func _on_knockback_timer_timeout():
 	knockback = false
 
 func _on_my_hurt_box_area_entered(area: Area2D):
-	take_damage(area.get_parent().get_damage(), area.get_parent().should_knockback())
+	take_damage(area.get_damage(), area.should_knockback())
 
 func get_damage():
 	return damage

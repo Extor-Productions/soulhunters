@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvj8dc88l5vvk"]
+[gd_scene load_steps=3 format=3 uid="uid://bcphcbkmqcsuf"]
 
-[ext_resource type="Script" path="res://Boss/BossEnter.gd" id="1_blw4h"]
+[ext_resource type="Script" path="res://Boss/SceneTransfer.gd" id="1_lv6w0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_komqj"]
 size = Vector2(20, 33)
 
-[node name="BossEnter" type="Area2D"]
+[node name="SceneTransfer" type="Area2D"]
 collision_layer = 0
-script = ExtResource("1_blw4h")
+script = ExtResource("1_lv6w0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_komqj")

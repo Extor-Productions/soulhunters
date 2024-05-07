@@ -46,12 +46,13 @@ func change_state(new_state: States):
 	
 	current_dir = ""
 	
-	ground_collision.disabled = true
 	if current_state < 2:
 		global_position.y = 0
 	
 	if current_state == States.Idle:
 		return_point = global_position
+	if current_state == States.Return:
+		attack_timer.start()
 	
 	current_state = new_state
 	
@@ -78,7 +79,9 @@ func choose_attack_state():
 	var max = States.values().max()
 	var min = States.values().min() + 2 #plus två för att ta bort idle, return
 	
-	var new_attack = randi_range(min, max)
+	var new_attack_state = randi_range(min, max)
+	
+	change_state(new_attack_state)
 
 func Return(delta):
 	if global_position.distance_to(return_point) <= 1 and global_position.distance_to(return_point) >= -1:
@@ -96,8 +99,9 @@ func Idle(delta):
 
 func ground_slam(delta):
 	if is_on_floor():
-		ground_collision.disabled = false
-		if wait_timer.is_stopped():
+		if wait_count == 0:
+			wait_count += 1
+			ground_collision.disabled = false
 			wait_timer.start()
 	
 	velocity.y += gravity * delta
@@ -154,21 +158,29 @@ func _on_hurt_box_area_entered(area: Area2D):
 func take_damage(damage_amount: int):
 	#det är plus för att damage_amount är ett negativt tal
 	health += damage_amount
-	print(health)
+	#print(health)
 	
 	if health <= 0:
 		death()
 
 func _on_attack_timer_timeout():
-	pass # Replace with function body.
+	choose_attack_state()
 
 func _on_around_timer_timeout():
 	return_point = Vector2(global_position.x, 0)
 	
 	change_state(States.Return)
 
+var wait_count = 0
 func _on_wait_timer_timeout():
-	change_state(States.Return)
+	print(wait_count)
+	if wait_count == 1:
+		ground_collision.disabled = true
+		wait_timer.start()
+		wait_count += 1
+	elif wait_count == 2:
+		change_state(States.Return)
+		wait_count = 0
 
 func death():
 	current_state = -1
