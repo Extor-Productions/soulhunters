@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bcphcbkmqcsuf"]
 
-[ext_resource type="Script" path="res://Boss/SceneTransfer.gd" id="1_lv6w0"]
+[ext_resource type="Script" path="res://Worlds/Scene Transfer/SceneTransfer.gd" id="1_lv6w0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_komqj"]
 size = Vector2(20, 33)

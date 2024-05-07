@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ijfbak2eaa5w"]
+[gd_scene load_steps=13 format=3 uid="uid://ijfbak2eaa5w"]
 
 [ext_resource type="Script" path="res://Worlds/Levels/World.gd" id="1_6toop"]
 [ext_resource type="Texture2D" uid="uid://b7c6dpn6osgra" path="res://GameAssets/TileSet.png" id="2_c2poo"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dvgyxitgmm12" path="res://Characters/Enemies/Ghost/ghost_minion.tscn" id="5_yq5yb"]
 [ext_resource type="Script" path="res://Characters/Enemies/Snail/snail_movment.gd" id="6_xs5dn"]
 [ext_resource type="PackedScene" uid="uid://5e1lv8cli7ru" path="res://Characters/Enemies/Snail/snail.tscn" id="7_h60p8"]
+[ext_resource type="PackedScene" uid="uid://bcphcbkmqcsuf" path="res://Worlds/Scene Transfer/SceneTransfer.tscn" id="8_ngrsx"]
+[ext_resource type="PackedScene" uid="uid://c4lyu43iyqnu0" path="res://Boss/Skeleton_Boss/skeleton_arena.tscn" id="9_v3ug2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y3kg3"]
 texture = ExtResource("2_c2poo")
@@ -101,3 +103,7 @@ rotation = 3.14159
 [node name="snail" parent="Path2D/PathFollow2D" instance=ExtResource("7_h60p8")]
 position = Vector2(0, 5)
 rotation = -3.14159
+
+[node name="SceneTransfer" parent="." instance=ExtResource("8_ngrsx")]
+position = Vector2(309, -32)
+next_scene = ExtResource("9_v3ug2")
