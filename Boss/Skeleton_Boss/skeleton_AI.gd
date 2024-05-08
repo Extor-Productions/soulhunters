@@ -12,7 +12,7 @@ var direction = Vector2.ZERO
 var gravity = 1500
 
 var damage = -1
-var health = 20
+var health = 1
 
 @export var move_speed = 9500
 
@@ -173,7 +173,6 @@ func _on_around_timer_timeout():
 
 var wait_count = 0
 func _on_wait_timer_timeout():
-	print(wait_count)
 	if wait_count == 1:
 		ground_collision.disabled = true
 		wait_timer.start()
@@ -191,14 +190,15 @@ func death():
 	
 	#Spawn coins
 	await get_tree().create_timer(1.5).timeout
+	var spawn_pos = global_position
 	for coin in coin_amount:
 		var new_coin = coin_scene.instantiate()
 		#Randomize spawn location
+		new_coin.global_position = Vector2(spawn_pos.x + randf_range(-125, 125), spawn_pos.y)
 		
 		get_parent().call_deferred("add_child", new_coin)
 		await get_tree().create_timer(randf_range(0.05, 0.1)).timeout
 
 	#Ta bort från scenen
 	await anim_player.animation_finished
-	print("test")
 	queue_free()

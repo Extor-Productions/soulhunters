@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4lyu43iyqnu0"]
+[gd_scene load_steps=12 format=3 uid="uid://c4lyu43iyqnu0"]
 
 [ext_resource type="Texture2D" uid="uid://bigyhlra5fb7q" path="res://GameAssets/new_tileset.png" id="1_k1k2j"]
 [ext_resource type="PackedScene" uid="uid://c41rbon1lqbq5" path="res://Boss/Skeleton_Boss/skeleton_boss.tscn" id="2_5cpj7"]
 [ext_resource type="PackedScene" uid="uid://gbtd5wsviieh" path="res://Characters/Classes/Slime Woriar/slime_warior.tscn" id="3_idbn8"]
 [ext_resource type="PackedScene" uid="uid://bcphcbkmqcsuf" path="res://Worlds/Scene Transfer/SceneTransfer.tscn" id="4_qwibs"]
-[ext_resource type="PackedScene" uid="uid://ijfbak2eaa5w" path="res://Worlds/Levels/world.tscn" id="5_ldpot"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4xwyw"]
 texture = ExtResource("1_k1k2j")
@@ -131,18 +130,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("SceneTransfer:monitoring")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_umpmg"]
 length = 0.001
@@ -234,18 +221,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, true]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("SceneTransfer:monitoring")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hrjg0"]
 _data = {
@@ -297,5 +272,4 @@ libraries = {
 }
 
 [node name="SceneTransfer" parent="." instance=ExtResource("4_qwibs")]
-position = Vector2(-442, 112)
-next_scene = ExtResource("5_ldpot")
+position = Vector2(-403, 64)
