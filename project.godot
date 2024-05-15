@@ -21,6 +21,10 @@ Game="*res://GlobalScript/Game.gd"
 Utils="*res://GlobalScript/Utils.gd"
 GlobalSignals="*res://GlobalScript/GlobalSignals.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 Left={

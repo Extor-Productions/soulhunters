@@ -22,3 +22,5 @@ func player_death():
 	
 	current_scene_node.call_deferred("add_child", new_start_screen)
 	current_scene_node.call_deferred("remove_child", old_scene)
+
+

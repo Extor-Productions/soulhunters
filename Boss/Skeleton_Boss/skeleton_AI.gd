@@ -150,7 +150,7 @@ func get_damage():
 	return damage
 
 func should_knockback():
-	return false
+	return true
 
 func _on_hurt_box_area_entered(area: Area2D):
 	take_damage(area.get_damage())
