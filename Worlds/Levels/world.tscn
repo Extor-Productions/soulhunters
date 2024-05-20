@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ijfbak2eaa5w"]
+[gd_scene load_steps=14 format=3 uid="uid://ijfbak2eaa5w"]
 
 [ext_resource type="Script" path="res://Worlds/Levels/World.gd" id="1_6toop"]
 [ext_resource type="TileSet" uid="uid://dp8bvlilsd0tu" path="res://GameAssets/TileSet.tres" id="2_kxjt3"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c4lyu43iyqnu0" path="res://Boss/Skeleton_Boss/skeleton_arena.tscn" id="9_v3ug2"]
 [ext_resource type="Script" path="res://Worlds/Levels/Node2D.gd" id="10_c4jty"]
 [ext_resource type="PackedScene" uid="uid://bagu6xjo6cclm" path="res://Menus/Pause/Pause_Menu.tscn" id="11_w4t7h"]
+[ext_resource type="Script" path="res://Pause.gd" id="12_bbdkg"]
 
 [sub_resource type="Curve2D" id="Curve2D_xaa01"]
 _data = {
@@ -59,3 +60,6 @@ script = ExtResource("10_c4jty")
 
 [node name="CanvasLayer" parent="Pause" instance=ExtResource("11_w4t7h")]
 visible = false
+
+[node name="Pause2" type="Node2D" parent="."]
+script = ExtResource("12_bbdkg")

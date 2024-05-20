@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://bagu6xjo6cclm"]
+[gd_scene load_steps=2 format=3 uid="uid://bagu6xjo6cclm"]
+
+[ext_resource type="Script" path="res://Menus/Pause/Pause_Menu.gd" id="1_q3bij"]
 
 [node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_q3bij")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -10,17 +13,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Control"]
+[node name="Options" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -213.0
-offset_top = -130.5
-offset_right = 213.0
-offset_bottom = 130.5
+offset_left = -200.0
+offset_top = -279.0
+offset_right = 5.0
+offset_bottom = -211.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "gang signs"
+text = "options"
+
+[node name="Main" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 377.0
+offset_top = 250.0
+offset_right = 578.0
+offset_bottom = 338.0
+text = "back to main menu"
+
+[node name="Quit" type="Button" parent="Control"]
+offset_left = 386.0
+offset_top = 355.0
+offset_right = 575.0
+offset_bottom = 429.0
+text = "Quit"
+
+[connection signal="button_down" from="Control/Options" to="." method="_on_options_button_down"]
+[connection signal="button_down" from="Control/Main" to="." method="_on_main_button_down"]
+[connection signal="button_down" from="Control/Quit" to="." method="_on_quit_button_down"]
