@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+#Hildings kod
 @onready var movement_controller = $Movment_Node
 @onready var warrior_node = $Warrior
 
@@ -13,9 +14,11 @@ extends CharacterBody2D
 var knockback = false
 
 func _ready():
+	#Reseta spelarens animation
 	$AnimationPlayer.play("RESET")
 
 func _physics_process(delta):
+	#Kolla spelaren kan röra sig
 	if can_move:
 		move(delta)
 		movement_controller.dash(delta)
@@ -32,14 +35,16 @@ func move(delta: float):
 	else:
 		movement_controller.knockback(delta)
 
-func take_damage(damage_amount: int, should_knockback: bool):
+func take_damage(amount: int, should_knockback: bool):
 	if should_knockback:
 		#Aktivera knockback
 		knockback = true
 		$KnockbackTimer.start()
 	
-	health += damage_amount
-	health_bar.change_health(damage_amount)
+	#ändra hälksan med amount
+	health += amount
+	#Säg till spelarens health bar att ändra med amount
+	health_bar.change_health(amount)
 	
 	if health <= 0:
 		GlobalSignals.emit_signal("player_death")

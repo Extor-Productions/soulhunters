@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+#Hildings kod
+
 enum States {
 	Chase,
 	Idle,
@@ -26,6 +28,7 @@ func exit(new_state: States):
 	current_state = new_state
 
 func _physics_process(delta):
+	#Kolla vilken state spöket är i och kör rätt funktion
 	match current_state:
 		States.Return:
 			Return(delta)
@@ -63,6 +66,7 @@ func Return(delta: float):
 		
 		velocity = spawn_direction * speed * delta
 		
+		#Om spöket är när tilbaka till sin spawn point så byt state till idle
 		if global_position.distance_to(spawn_point.global_position) <= 1 and global_position.distance_to(spawn_point.global_position) >= -1:
 			exit(States.Idle)
 

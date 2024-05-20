@@ -1,5 +1,6 @@
 extends Node2D
 
+#Rasmus kod
 var number_of_classes = 1
 
 #vilken klass den visar
@@ -34,5 +35,6 @@ func _on_selection_arrow_right_pressed():
 	show_class()
 
 #startar
+#Hildings kod
 func _on_ready_pressed():
 	GlobalSignals.emit_signal("change_scene", preload("res://Worlds/Levels/world.tscn"))
