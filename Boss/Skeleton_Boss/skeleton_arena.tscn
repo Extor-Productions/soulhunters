@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4lyu43iyqnu0"]
+[gd_scene load_steps=11 format=3 uid="uid://c4lyu43iyqnu0"]
 
 [ext_resource type="PackedScene" uid="uid://c41rbon1lqbq5" path="res://Boss/Skeleton_Boss/skeleton_boss.tscn" id="2_5cpj7"]
 [ext_resource type="TileSet" uid="uid://dp8bvlilsd0tu" path="res://GameAssets/TileSet.tres" id="2_f6ub5"]
 [ext_resource type="PackedScene" uid="uid://gbtd5wsviieh" path="res://Characters/Classes/Slime Woriar/slime_warior.tscn" id="3_idbn8"]
 [ext_resource type="PackedScene" uid="uid://bcphcbkmqcsuf" path="res://Worlds/Scene Transfer/SceneTransfer.tscn" id="4_qwibs"]
-[ext_resource type="Script" path="res://Worlds/Levels/Node2D.gd" id="5_ugwg3"]
-[ext_resource type="PackedScene" uid="uid://bagu6xjo6cclm" path="res://Menus/Pause/Pause_Menu.tscn" id="6_xg1cx"]
+[ext_resource type="PackedScene" uid="uid://c4idgtt4cu7we" path="res://Menus/Pause/pause.tscn" id="5_pfrpe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_meqbo"]
 size = Vector2(15, 48)
@@ -227,8 +226,4 @@ libraries = {
 position = Vector2(-441, 112)
 monitoring = false
 
-[node name="Pause" type="Node2D" parent="."]
-script = ExtResource("5_ugwg3")
-
-[node name="CanvasLayer" parent="Pause" instance=ExtResource("6_xg1cx")]
-visible = false
+[node name="Pause" parent="." instance=ExtResource("5_pfrpe")]
