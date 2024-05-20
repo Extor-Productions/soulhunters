@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+#Hildings kod
+
 enum States {
 	Idle, #Fram och tillbaka ganska lågt
 	Return, #Åk upp till idle höjden från slutet av förra state
@@ -34,9 +36,11 @@ var current_dir = ""
 @onready var wait_timer = $GroundSlam/WaitTimer
 
 func _ready():
+	#Spela start cutscenen
 	anim_player.play("Start")
 	
 	await anim_player.animation_finished
+	#Starta boss fighten när cutscenen är klar
 	change_state(States.Idle)
 	attack_timer.start()
 
@@ -46,12 +50,15 @@ func change_state(new_state: States):
 	
 	current_dir = ""
 	
+	#Om förra staten va idle eller return när den byter ska den se till att skeletets y värde är 0
 	if current_state < 2:
 		global_position.y = 0
 	
 	if current_state == States.Idle:
+		#Ändra return piunkten till där den börjar med ground slam
 		return_point = global_position
 	if current_state == States.Return:
+		#Starta attack colldownen så den inte bara spammar attacker
 		attack_timer.start()
 	
 	current_state = new_state
@@ -71,8 +78,8 @@ func _physics_process(delta):
 			ground_slam(delta)
 		States.GoAround:
 			go_around(delta)
-		_:
-			pass
+		_: #Körs om current state får en state som inte finns
+			print("State does not exist")
 
 func choose_attack_state():
 	randomize()
@@ -84,6 +91,7 @@ func choose_attack_state():
 	change_state(new_attack_state)
 
 func Return(delta):
+	#Kolla om skeletet är när till return punkten och då byt state till idle
 	if global_position.distance_to(return_point) <= 1 and global_position.distance_to(return_point) >= -1:
 			change_state(States.Idle)
 	

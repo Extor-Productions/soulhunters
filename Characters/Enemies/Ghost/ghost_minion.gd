@@ -75,7 +75,6 @@ func take_damage(amount):
 	
 	if health <= 0:
 		spawn_coin()
-		
 		queue_free()
 
 func get_damage():

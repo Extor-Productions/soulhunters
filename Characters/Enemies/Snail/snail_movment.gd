@@ -1,6 +1,7 @@
 extends Path2D
-
 class_name pathfinding_snail
+
+#Rasmus kod
 
 var speed = 50
 @onready var path_follow = $PathFollow2D

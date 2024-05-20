@@ -1,5 +1,7 @@
 extends Node2D
 
+#Hildings kod
+
 @onready var parent: CharacterBody2D = self.get_parent()
 @onready var animation_player: AnimationPlayer = self.get_parent().get_node("AnimationPlayer")
 

@@ -1,6 +1,8 @@
 class_name snail
 extends StaticBody2D
 
+#Rasmus kod
+
 var my_position = Vector2.ZERO
 var health = 5
 var damage = -1

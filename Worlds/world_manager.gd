@@ -1,5 +1,7 @@
 extends Node2D
 
+#Hildings kod
+
 @onready var current_scene_node = $CurrentScene
 @onready var start_screen = preload("res://Menus/main_meny.tscn")
 
@@ -11,6 +13,7 @@ func change_scene(next_scene: PackedScene):
 	var new_scene = next_scene.instantiate()
 	var old_scene = current_scene_node.get_child(0)
 	
+	#Ta bort den gamla scenen och lägg till den nya till skärmen
 	current_scene_node.call_deferred("add_child", new_scene)
 	current_scene_node.call_deferred("remove_child", old_scene)
 

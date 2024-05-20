@@ -1,5 +1,7 @@
 extends Control
 
+#Vi skerv koden tillsammans
+
 @onready var coin_text = $CoinText
 var coin = 0
 

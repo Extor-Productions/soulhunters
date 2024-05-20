@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+#Rasmus kod
+
 @onready var gravity = 900
 
 func _ready():

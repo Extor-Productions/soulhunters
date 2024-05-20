@@ -1,5 +1,7 @@
 extends Control
 
+#Hildings kod
+
 @onready var bar = $ProgressBar
 
 var health = 10
