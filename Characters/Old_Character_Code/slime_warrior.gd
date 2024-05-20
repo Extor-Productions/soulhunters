@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+#Rasmus kod
+
 @export var speed : int = 150
 @export var jump_force : int = 255
 @export var second_jump_force : int = 200

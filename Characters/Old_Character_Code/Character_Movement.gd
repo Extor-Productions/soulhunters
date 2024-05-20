@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+#Rasmus kod
+
 const gravity = 500.0  # Adjust as needed
 const move_speed = 150.0  # Adjust as needed
 const jump_force = 150.0  # Adjust as needed

@@ -1,5 +1,7 @@
 extends Area2D
 
+#Hildings kod
+
 @export var damage = -1
 
 func get_damage():
