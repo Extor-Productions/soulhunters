@@ -1,5 +1,5 @@
 extends Node2D
-class_name Pause
+
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS

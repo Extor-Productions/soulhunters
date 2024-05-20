@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ijfbak2eaa5w"]
+[gd_scene load_steps=12 format=3 uid="uid://ijfbak2eaa5w"]
 
 [ext_resource type="Script" path="res://Worlds/Levels/World.gd" id="1_6toop"]
 [ext_resource type="TileSet" uid="uid://dp8bvlilsd0tu" path="res://GameAssets/TileSet.tres" id="2_kxjt3"]
@@ -9,9 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://5e1lv8cli7ru" path="res://Characters/Enemies/Snail/snail.tscn" id="7_h60p8"]
 [ext_resource type="PackedScene" uid="uid://bcphcbkmqcsuf" path="res://Worlds/Scene Transfer/SceneTransfer.tscn" id="8_ngrsx"]
 [ext_resource type="PackedScene" uid="uid://c4lyu43iyqnu0" path="res://Boss/Skeleton_Boss/skeleton_arena.tscn" id="9_v3ug2"]
-[ext_resource type="Script" path="res://Worlds/Levels/Node2D.gd" id="10_c4jty"]
-[ext_resource type="PackedScene" uid="uid://bagu6xjo6cclm" path="res://Menus/Pause/Pause_Menu.tscn" id="11_w4t7h"]
-[ext_resource type="Script" path="res://Pause.gd" id="12_bbdkg"]
+[ext_resource type="PackedScene" uid="uid://c4idgtt4cu7we" path="res://Menus/Pause/pause.tscn" id="10_q4shb"]
 
 [sub_resource type="Curve2D" id="Curve2D_xaa01"]
 _data = {
@@ -55,11 +53,4 @@ rotation = -3.14159
 position = Vector2(309, -32)
 next_scene = ExtResource("9_v3ug2")
 
-[node name="Pause" type="Node2D" parent="."]
-script = ExtResource("10_c4jty")
-
-[node name="CanvasLayer" parent="Pause" instance=ExtResource("11_w4t7h")]
-visible = false
-
-[node name="Pause2" type="Node2D" parent="."]
-script = ExtResource("12_bbdkg")
+[node name="Pause" parent="." instance=ExtResource("10_q4shb")]
