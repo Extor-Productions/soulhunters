@@ -1,7 +1,7 @@
 extends Node2D
 #Rasmus skriver den här koden
 var In_Menu = -1
-
+var In_Inv = 0
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS # kan inte pausa
 
@@ -23,7 +23,16 @@ func _unhandled_input(event):
 				In_Menu = 0
 			_:
 				print("Error menu out of bounds")
-	if event.is_action_pressed("Inventory"):1234
+	if event.is_action_pressed("Inventory"):
+		match In_Inv:
+			0:
+				$Inventory.visible = true
+				get_tree().paused = true
+				In_Inv = 1
+			1:
+				$Inventory.visible = false
+				get_tree().paused = false
+				In_Inv = 0
 
 
 
