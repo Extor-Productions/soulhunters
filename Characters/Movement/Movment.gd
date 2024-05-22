@@ -70,8 +70,9 @@ func apply_gravity(delta):
 
 func jump(delta):
 	#Om spelaren är på marken reseta hur många hop spelaren har gjort
-	if parent.is_on_floor():
+	if parent.is_on_floor() or parent.is_on_ceiling():
 		current_jumps = 0
+	
 	
 	if Input.is_action_just_pressed("Jump") and current_jumps < max_jumps:
 			if current_jumps == 0:

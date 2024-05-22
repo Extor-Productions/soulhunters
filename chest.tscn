@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b15aomtoi0ocv"]
+
+[ext_resource type="Texture2D" uid="uid://b7oybtv8wrgfi" path="res://GameAssets/Objekts.png" id="1_dlkaf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ke2or"]
+size = Vector2(14, 10)
+
+[node name="chest" type="Node2D"]
+
+[node name="Objekts" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("1_dlkaf")
+region_enabled = true
+region_rect = Rect2(32, 6, 14, 10)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_ke2or")

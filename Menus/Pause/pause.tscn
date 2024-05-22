@@ -39,6 +39,8 @@ offset_right = 673.0
 offset_bottom = 168.0
 text = "Controls"
 
+[node name="Inventory" type="CanvasLayer" parent="."]
+
 [connection signal="button_down" from="Pause Menu/Options" to="." method="_on_Options_button_down"]
 [connection signal="button_down" from="Pause Menu/Main menu" to="." method="_on_Main_menu_button_down"]
 [connection signal="button_down" from="Pause Menu/Quit" to="." method="_on_Quit_button_down"]
