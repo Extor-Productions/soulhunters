@@ -78,6 +78,8 @@ func _physics_process(delta):
 			ground_slam(delta)
 		States.GoAround:
 			go_around(delta)
+		-1:
+			pass
 		_: #Körs om current state får en state som inte finns
 			print("State does not exist")
 
