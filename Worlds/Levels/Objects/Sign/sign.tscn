@@ -15,12 +15,14 @@ region_enabled = true
 region_rect = Rect2(48, 2.08165e-12, 16, 16)
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_rveeg")
 
 [node name="Text" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -37,9 +39,9 @@ color = Color(0, 0, 0, 1)
 [node name="RichTextLabel" type="RichTextLabel" parent="Text"]
 texture_filter = 1
 layout_mode = 0
-offset_left = -20.0
+offset_left = -21.0
 offset_top = -24.0
-offset_right = 20.0
+offset_right = 18.0
 offset_bottom = -5.0
 theme_override_font_sizes/normal_font_size = 7
 text = "testte"
