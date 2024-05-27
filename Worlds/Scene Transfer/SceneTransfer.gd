@@ -1,7 +1,7 @@
 extends Area2D
 
 #Hildings kod
-@export var next_scene: PackedScene = preload("res://Worlds/Levels/world.tscn")
+@export var next_scene: PackedScene = preload("res://Worlds/Levels/World_1/world.tscn")
 
 func _on_body_entered(body: CharacterBody2D):
 	#Kolla om bodyn som arean känner av är spelaren
