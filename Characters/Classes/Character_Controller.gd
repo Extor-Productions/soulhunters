@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var warrior_node = $Warrior
 
 @onready var health_bar = $Health
+@onready var player_ui = $PlayerUI
 
 @export var health = 10
 @export var damage = -1

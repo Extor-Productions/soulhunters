@@ -16,9 +16,10 @@ var movment = true
 @export var dash_force: int = 133333
 var can_dash = true
 
-@export var gravity: float = 900
+@export var gravity: int = 750
+var max_down_velocity: int = 5500
 
-@export var jump_height: int = 255
+@export var jump_height: int = 13550
 @export var max_jumps: int = 2
 var current_jumps: int = 0
 
@@ -47,6 +48,7 @@ func move(delta: float):
 			parent.rotation_degrees = 0
 		
 		parent.move_and_slide()
+
 #Rasmus kod
 func dash(delta):
 	if Input.is_action_just_pressed("dash") and !dashing and can_dash:
@@ -66,7 +68,10 @@ func dash(delta):
 #Hildings kod
 func apply_gravity(delta):
 	if not parent.is_on_floor():
-		parent.velocity.y += gravity * delta
+		if parent.velocity.y <= max_down_velocity:
+			parent.velocity.y += gravity * delta
+		else:
+			pass
 
 func jump(delta):
 	#Om spelaren är på marken reseta hur många hop spelaren har gjort
@@ -75,14 +80,15 @@ func jump(delta):
 	
 	
 	if Input.is_action_just_pressed("Jump") and current_jumps < max_jumps:
-			if current_jumps == 0:
-				parent.velocity.y -= jump_height
-				#Double Jump
-			elif current_jumps == 1:
-				parent.velocity.y = 0
-				parent.velocity.y -= jump_height
-			
-			current_jumps += 1
+		parent.velocity.y = 0
+		
+		if current_jumps == 0:
+			parent.velocity.y -= jump_height * delta
+			#Double Jump
+		elif current_jumps == 1:
+			parent.velocity.y -= jump_height * delta
+		
+		current_jumps += 1
 
 func knockback(delta: float):
 	parent.velocity.x += knockback_force * knockback_direction * delta
