@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://dikkyxitji33n"]
+
+[ext_resource type="Script" path="res://Worlds/Levels/Objects/one floor/OneWayFloor.gd" id="1_phh6x"]
+[ext_resource type="Texture2D" uid="uid://bigyhlra5fb7q" path="res://GameAssets/new_tileset.png" id="2_um3ky"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6dilh"]
+size = Vector2(48, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oytqo"]
+size = Vector2(48, 4)
+
+[node name="OneWayFloor" type="Node2D"]
+script = ExtResource("1_phh6x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_um3ky")
+region_enabled = true
+region_rect = Rect2(48, 48, 16, 16)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(16, 0)
+texture = ExtResource("2_um3ky")
+region_enabled = true
+region_rect = Rect2(48, 48, 16, 16)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(32, 0)
+texture = ExtResource("2_um3ky")
+region_enabled = true
+region_rect = Rect2(48, 48, 16, 16)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(16, 0)
+shape = SubResource("RectangleShape2D_6dilh")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(16, 11)
+shape = SubResource("RectangleShape2D_oytqo")
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(0, -25)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(16, 11)
+shape = SubResource("RectangleShape2D_oytqo")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
