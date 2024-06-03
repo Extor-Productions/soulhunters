@@ -37,4 +37,4 @@ func _on_selection_arrow_right_pressed():
 #startar
 #Hildings kod
 func _on_ready_pressed():
-	GlobalSignals.emit_signal("change_scene", preload("res://Worlds/Levels/World_2/world.tscn"))
+	GlobalSignals.emit_signal("change_scene", preload("res://Worlds/Levels/World_1/world.tscn"))
